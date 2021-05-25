@@ -1,0 +1,26 @@
+<launch>
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find turtlebot3_gazebo)/worlds/turtlebot3_world.world"/>
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui" value="true"/>
+    <arg name="headless" value="false"/>
+    <arg name="debug" value="false"/>
+  </include>
+  
+  <!-- args -->
+  <arg name="set_map_frame"  default="map"/>
+
+  <node pkg="map_server" name="map_server" type="map_server" 
+      args="$(find turtlebot3_gazebo)/maps/turtlebot3_world.yaml">
+    <param name="frame_id" value="$(arg set_map_frame)"/>
+  </node>
+
+  <group if="$(arg open_rviz)"> 
+    <node pkg="rviz" type="rviz" name="rviz" required="true"
+            args="-d $(find turtlebot3_navigation)/rviz/turtlebot3_navigation.rviz"/>
+    </group>
+  </group>
+
+</launch>
