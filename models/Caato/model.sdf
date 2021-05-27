@@ -1,0 +1,489 @@
+<?xml version="1.0"?>
+
+<sdf version='1.6'>
+  <model name='Trolley'>
+  <static>0</static>
+
+
+
+  <link name="base_link">
+  <pose frame=''>0 0 0.3 0 -0 0</pose>
+  
+    <visual name='base_link'>
+      <pose frame=''>0 0 0 0 0 0</pose>
+      <geometry>
+          <mesh>
+            <scale> 0.5 0.8 0.8</scale>
+            <uri>model://Caato/meshes/base_link.stl</uri>
+          </mesh>      
+      </geometry>
+      <material name="base_material">
+        <color rgba="0.615686 0.811765 0.929412 1.0"/>
+      </material>
+    </visual>
+    <collision name='chassis_base_link'>
+      <pose frame=''>0 0 0.0625 0 0 0</pose>
+      <geometry>
+          <box>
+            <size>0.02 0.4 0.4</size>
+          </box> 
+      </geometry>
+      <material name="base_material">
+        <color rgba="0.615686 0.811765 0.929412 1.0"/>
+      </material>
+    </collision>
+  </link>
+  <gazebo reference="base_link">
+    <mu1 value="0.0" />
+    <mu2 value="0.0" />
+    <material>Gazebo/Turquoise</material>
+  </gazebo>
+
+  <link name="inertial_link" >
+    <inertial>
+      <mass>1</mass>
+      <pose frame=''>0 -0.085 0.0625 0 0 0</pose>
+      <inertia>
+       <ixx>0.2</ixx>
+       <ixy>0</ixy>
+       <ixz>0</ixz>
+       <iyy>0.2</iyy>
+       <iyz>0</iyz>
+       <izz>1.0296</izz>
+       </inertia>
+      <pose frame=''>0 0 0 0 0 0</pose>
+    </inertial>
+  </link>
+
+  <joint name="inertial_joint" type="fixed" >
+    <orgin xyz="0 0 0" rpy="0 0 0" />
+      <child>inertial_link</child>
+      <parent>base_link</parent>
+  </joint>
+
+  <link name="imu_link"/>
+  <joint name="imu_joint" type="fixed">
+    <pose frame=''>0 0 0.0625 0 0 0</pose>
+      <child>imu_link</child>
+      <parent>base_link</parent>
+  </joint>
+
+  <link name="hokuyo_laser_scanner_1">
+  
+    <visual name='hokuyo_laser_scanner_1'>
+      <pose frame=''>0 0 0 0 0 0</pose>
+      <geometry>
+          <mesh>
+            <uri>model://Caato/meshes/hokuyo_laser_scanner.stl</uri>
+          </mesh> 
+      </geometry>
+      <material name="hokuyo_laser_scanner_material">
+        <color rgba="1 0.643137 0.0313725 1.0"/>
+      </material>
+    </visual>
+    <collision name='chassis_hokuyo_laser_scanner_1'>
+      <pose frame=''>0 0 0 0 0 0</pose>
+      <geometry>
+          <mesh>
+            <uri>model://Caato/meshes/hokuyo_laser_scanner.stl</uri>
+          </mesh> 
+      </geometry>
+      <material name="hokuyo_laser_scanner_material">
+        <color rgba="1 0.643137 0.0313725 1.0"/>
+      </material>
+    </collision>
+    <inertial>
+      <pose frame=''>0 0 0 0 0 0</pose>
+      <mass>0.2</mass>
+      <inertia>
+       <ixx>0</ixx>
+       <ixy>0</ixy>
+       <ixz>0</ixz>
+       <iyy>0</iyy>
+       <iyz>0</iyz>
+       <izz>0</izz>
+       </inertia>
+    </inertial>
+  </link>
+  <gazebo reference="hokuyo_laser_scanner_1">
+    <material>Gazebo/Orange</material>
+  </gazebo>
+  
+  <joint name="hokuyo_laser_scanner_1_joint" type="fixed">
+    <pose frame=''>0.320104 0.330104 0.05225 3.14159 0 0.785398</pose>
+      <child>hokuyo_laser_scanner_1</child>
+      <parent>base_link</parent>
+    <axis> 
+      <xyz>0 0 1</xyz>
+    </axis>
+  </joint>
+
+  <link name="hokuyo_laser_scanner_2">
+    <visual name='hokuyo_laser_scanner_2'>
+      <pose frame=''>0 0 0 0 0 0</pose>
+      <geometry>
+          <mesh>
+            <uri>model://Caato/meshes/hokuyo_laser_scanner.stl</uri>
+          </mesh> 
+      </geometry>
+      <material name="hokuyo_laser_scanner_material">
+        <color rgba="1 0.643137 0.0313725 1.0"/>
+      </material>
+    </visual>
+    <collision name='chassis_hokuyo_laser_scanner_2'>
+      <pose frame=''>0 0 0 0 0 0</pose>
+      <geometry>
+          <mesh>
+            <uri>model://Caato/meshes/hokuyo_laser_scanner.stl</uri>
+          </mesh> 
+      </geometry>
+      <material name="hokuyo_laser_scanner_material">
+        <color rgba="1 0.643137 0.0313725 1.0"/>
+      </material>
+    </collision>
+    <inertial>
+      <pose frame=''>0 0 0 0 0 0</pose>
+      <mass>0</mass>
+      <inertia>
+       <ixx>0</ixx>
+       <ixy>0</ixy>
+       <ixz>0</ixz>
+       <iyy>0</iyy>
+       <iyz>0</iyz>
+       <izz>0</izz>
+       </inertia>
+    </inertial>
+  </link>
+
+  <gazebo reference="hokuyo_laser_scanner_2">
+    <material>Gazebo/Orange</material>
+  </gazebo>
+
+  <joint name="hokuyo_laser_scanner_2_joint" type="fixed">
+    <pose frame=''>-0.320104 -0.330104 0.0525 3.14159 0 -2.355</pose>
+      <child>hokuyo_laser_scanner_2</child>
+      <parent>base_link</parent>
+    <axis> 
+      <xyz>0 0 1</xyz>
+    </axis>
+  </joint>
+
+  <link name="xiaomi_pro_hub_motor_1">
+    <visual name='xiaomi_pro_hub_motor_1'>
+      <pose frame=''>0 0 0 0 0 0</pose>
+      <geometry>
+          <mesh>
+            <uri>model://Caato/meshes/xiaomi_pro_hub_motor.stl</uri>
+          </mesh> 
+      </geometry>
+      <material name="xiaomi_pro_hub_motor_material">
+        <color rgba="0.101961 0.101961 0.101961 1.0"/>
+      </material>
+    </visual>
+    <collision name='chassis_xiaomi_pro_hub_motor_1'>
+      <pose frame=''>0 0 0 0 0 0</pose>
+      <geometry>
+          <mesh>
+            <uri>model://Caato/meshes/xiaomi_pro_hub_motor.stl</uri>
+          </mesh> 
+      </geometry>
+      <material name="xiaomi_pro_hub_motor_material">
+        <color rgba="0.101961 0.101961 0.101961 1.0"/>
+      </material>
+    </collision>
+    <inertial>
+      <pose frame=''>0 0 0 0 0 0</pose>
+      <mass>3.22716</mass>
+      <inertia>
+       <ixx>0.5091772</ixx>
+       <ixy>1.96248e-06</ixy>
+       <ixz>-8.81136e-07</ixz>
+       <iyy>0.509018</iyy>
+       <iyz>4.58833e-07</iyz>
+       <izz>0.11918076</izz>
+       </inertia>
+    </inertial>
+  </link>
+
+  <gazebo reference="xiaomi_pro_hub_motor_1">
+    <mu1 value="1.0"/>
+    <mu2 value="1.0"/>
+    <kp value="10000000.0" />
+    <kd value="1.0" />
+    <fdir1 value="1 0 0"/>
+    <material>Gazebo/Grey</material>
+  </gazebo>
+
+  <joint name="wheel_left_joint" type="continuous">
+    <pose frame=''>2.00861e-05 0.206425 -0.04955 0 -0 0</pose>
+      <child>xiaomi_pro_hub_motor_1</child>
+      <parent>base_link</parent>
+    <axis> 
+      <xyz>0 1 0</xyz>
+    </axis>
+  </joint>
+
+  <link name="xiaomi_pro_hub_motor_2">
+    <visual name='xiaomi_pro_hub_motor_2'>
+      <pose frame=''>0 0 0 0 0 0</pose>
+      <geometry>
+          <mesh>
+            <uri>model://Caato/meshes/xiaomi_pro_hub_motor.stl</uri>
+          </mesh> 
+      </geometry>
+      <material name="xiaomi_pro_hub_motor_material">
+        <color rgba="0.101961 0.101961 0.101961 1.0"/>
+      </material>
+    </visual>
+    <collision name='chassis_xiaomi_pro_hub_motor_2'>
+      <pose frame=''>0 0 0 0 0 0</pose>
+      <geometry>
+          <mesh>
+            <uri>model://Caato/meshes/xiaomi_pro_hub_motor.stl</uri>
+          </mesh> 
+      </geometry>
+      <material name="xiaomi_pro_hub_motor_material">
+        <color rgba="0.101961 0.101961 0.101961 1.0"/>
+      </material>
+    </collision>
+    <inertial>
+      <pose frame=''>0 0 0 0 0 0</pose>
+      <mass>3.22716</mass>
+      <inertia ixx="0.5091772" ixy="1.96248e-06"  ixz="-8.81136e-07" iyy="0.569018" iyz="4.58833e-07" izz="0.118076" />
+    </inertial>
+  </link>
+
+  <gazebo reference="xiaomi_pro_hub_motor_2">
+    <mu1 value="1.0"/>
+    <mu2 value="1.0"/>
+    <kp value="10000000.0" />
+    <kd value="1.0" />
+    <fdir1 value="1 0 0"/>
+    <material>Gazebo/Grey</material>
+  </gazebo>
+
+  <joint name="wheel_right_joint" type="continuous">
+    <pose frame=''>0 -0.206425 -0.04955 0 0 0</pose>
+      <child>xiaomi_pro_hub_motor_2</child>
+      <parent>base_link</parent>
+    <axis> 
+      <xyz>0 1 0</xyz>
+    </axis>
+  </joint>
+
+  <!-- Caster wheels -->
+  <link name="castor_wheel_mount_front" >
+    <visual name='castor_wheel_mount_front'>
+      <pose frame=''>0 0 0 0 0 0</pose>
+      <geometry>
+          <mesh>
+            <uri>model://Caato/meshes/castor_mount.stl</uri>
+          </mesh> 
+      </geometry>
+      <material name="castor_mount_material">
+        <color rgba="0.647059 0.647059 0.647059 1.0"/>
+      </material>
+    </visual>
+    <collision name='chassis_castor_wheel_mount_front'>
+      <pose frame=''>0 0 0 0 0 0</pose>
+      <geometry>
+          <mesh>
+            <uri>model://Caato/meshes/castor_mount.stl</uri>
+          </mesh> 
+      </geometry>
+      <material name="castor_mount_material">
+        <color rgba="0.647059 0.647059 0.647059 1.0"/>
+      </material>
+    </collision>
+    <inertial>
+      <pose frame=''>0 0 0 0 0 0</pose>
+      <mass>0.01</mass>
+      <inertia>
+       <ixx>0</ixx>
+       <ixy>0</ixy>
+       <ixz>0</ixz>
+       <iyy>0</iyy>
+       <iyz>0</iyz>
+       <izz>0</izz>
+       </inertia>
+    </inertial>
+  </link>
+
+  <gazebo reference="castor_wheel_mount_front" >
+    <material>Gazebo/Grey</material>
+  </gazebo>
+
+  <joint name="castor_wheel_mount_front_joint"  type="fixed">
+    <pose frame=''>0.26 0 -0.0225 0 0 0</pose>
+    <!-- <pose frame=''="0.2981 0 &#45;0.10705" rpy="0 0 0" /> -->
+      <child>castor_wheel_mount_front</child>
+      <parent>base_link</parent>
+    <axis> 
+      <xyz>0 0 1</xyz>
+    </axis>
+  </joint>
+
+  <link name="castor_wheel_front">
+    <visual name='castor_wheel_front'>
+      <pose frame=''>0 0 0 0 0 0</pose>
+      <geometry>
+          <mesh>
+            <uri>model://Caato/meshes/castor_wheel.stl</uri>
+          </mesh> 
+      </geometry>
+      <material name="castor_wheel_material">
+        <color rgba="0.615686 0.811765 0.929412 1.0"/>
+      </material>
+    </visual>
+    <collision name='collision_castor_wheel_front'>
+      <pose frame=''>0 0 0 0 0 0</pose>
+      <geometry>
+          <mesh>
+            <uri>model://Caato/meshes/castor_wheel.stl</uri>
+          </mesh> 
+      </geometry>
+      <material name="castor_wheel_material">
+        <color rgba="0.615686 0.811765 0.929412 1.0"/>
+      </material>
+    </collision>
+    <inertial>
+      <pose frame=''>0 0 0 0 0 0</pose>
+      <mass>1</mass>
+      <inertia>
+       <ixx>0</ixx>
+       <ixy>0</ixy>
+       <ixz>0</ixz>
+       <iyy>0</iyy>
+       <iyz>0</iyz>
+       <izz>0</izz>
+       </inertia>
+    </inertial>
+  </link>
+
+  <joint name="castor_wheel_front_joint" type="continuous">
+    <pose frame=''>0.2981 0 -0.10705 0 0 0</pose>
+      <child>castor_wheel_front</child>
+      <parent>base_link</parent>
+    <axis> 
+      <xyz>0 1 0</xyz>
+    </axis>
+  </joint>
+
+  <gazebo reference="castor_wheel_front">
+    <mu1 value="1.0"/>
+    <mu2 value="1.0"/>
+    <kp value="100000.0" />
+    <kd value="1.0" />
+    <fdir1 value="0 0 1"/>
+    <material>Gazebo/Grey</material>
+  </gazebo>
+
+  <link name="castor_wheel_mount_back" >
+    <visual name='castor_wheel_mount_back'>
+      <pose frame=''>0 0 0 0 0 0</pose>
+      <geometry>
+          <mesh>
+            <uri>model://Caato/meshes/castor_mount.stl</uri>
+          </mesh> 
+      </geometry>
+      <material name="castor_mount_material">
+        <color rgba="0.647059 0.647059 0.647059 1.0"/>
+      </material>
+    </visual>
+    <collision name='collision_castor_wheel_mount_back'>
+      <pose frame=''>0.26 0 -0.0125 0 0 0</pose>
+      <geometry>
+          <mesh>
+            <uri>model://Caato/meshes/castor_mount.stl</uri>
+          </mesh>
+      </geometry>
+      <material name="castor_mount_material">
+        <color rgba="0.647059 0.647059 0.647059 1.0"/>
+      </material>
+    </collision>
+    <inertial>
+      <pose frame=''>0 0 0 0 0 0</pose>
+      <mass>0.01</mass>
+      <inertia>
+       <ixx>0</ixx>
+       <ixy>0</ixy>
+       <ixz>0</ixz>
+       <iyy>0</iyy>
+       <iyz>0</iyz>
+       <izz>0</izz>
+       </inertia>
+    </inertial>
+  </link>
+
+  <gazebo reference="castor_wheel_mount_back" >
+    <material>Gazebo/Grey</material>
+  </gazebo>
+
+  <joint name="castor_wheel_mount_back_joint"  type="fixed">
+    <pose frame=''>-0.262 0 -0.0225 0 0 0</pose>
+      <child>castor_wheel_mount_back</child>
+      <parent>base_link</parent>
+    <axis> 
+      <xyz>0 0 1</xyz>
+    </axis>
+  </joint>
+
+  <link name="castor_wheel_back">
+    <visual name='castor_wheel_back'>
+      <pose frame=''>0 0 0 0 0 0</pose>
+      <geometry>
+          <mesh>
+            <uri>model://Caato/meshes/castor_wheel.stl</uri>
+          </mesh>
+      </geometry>
+      <material name="castor_wheel_material">
+        <color rgba="0.615686 0.811765 0.929412 1.0"/>
+      </material>
+    </visual>
+    <collision name='collision_castor_wheel_back'>
+      <pose frame=''>0 0 0 0 0 0</pose>
+      <geometry>
+          <mesh>
+            <uri>model://Caato/meshes/castor_wheel.stl</uri>
+          </mesh>
+      </geometry>
+      <material name="castor_wheel_material">
+        <color rgba="0.615686 0.811765 0.929412 1.0"/>
+      </material>
+    </collision>
+    <inertial>
+      <pose frame=''>0 0 0 0 0 0</pose>
+      <mass>1</mass>
+      <inertia>
+       <ixx>0</ixx>
+       <ixy>0</ixy>
+       <ixz>0</ixz>
+       <iyy>0</iyy>
+       <iyz>0</iyz>
+       <izz>0</izz>
+       </inertia>
+    </inertial>
+  </link>
+
+  <joint name="castor_wheel_back_joint" type="continuous">
+    <pose frame=''>-0.2219 0 -0.10705 0 1.46607 0</pose>
+      <child>castor_wheel_back</child>
+      <parent>base_link</parent>
+    <axis> 
+      <xyz>0 1 0</xyz>
+    </axis>
+  </joint>
+
+  <gazebo reference="castor_wheel_back">
+    <mu1 value="1.0"/>
+    <mu2 value="1.0"/>
+    <kp value="100000.0" />
+    <kd value="1.0" />
+    <fdir1 value="0 0 1"/>
+    <material>Gazebo/Grey</material>
+  </gazebo>
+
+	
+
+  </model>
+</sdf>
