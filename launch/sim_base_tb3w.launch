@@ -1,0 +1,22 @@
+<launch>
+  <arg name="open_rviz" default="false"/>
+  <arg name="set_map_frame"  default="map"/>
+  <arg name="map_file" default="$(find adhoc_simulations)/maps/house.yaml"/>
+  <arg name="world_file" default="$(find turtlebot3_gazebo)/worlds/turtlebot3_house.world"/>
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(arg world_file)"/>
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui" value="true"/>
+    <arg name="headless" value="false"/>
+    <arg name="debug" value="false"/>
+  </include>
+
+	<!-- Map server -->
+	<node pkg="map_server" name="map_server" type="map_server" 
+			args="$(arg map_file)">
+		<param name="frame_id" value="$(arg set_map_frame)"/>
+	</node>
+
+</launch>
