@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>adhoc_simulations</name>
+  <version>1.0.0</version>
+  <description>Package of scripts for adhoc simulation launch</description>
+  <maintainer email="siotrobotics@gmail.com">Decada Robotics</maintainer>
+  <license>Apache 2.0</license>
+  <author email="scottcjx.w@gmail.com">Scott Cheng</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <exec_depend>turtlebot3_bringup</exec_depend>
+  <exec_depend>turtlebot3_gazebo</exec_depend>
+  <exec_depend>turtlebot3_navigation</exec_depend>
+  <exec_depend>amcl</exec_depend>
+  <exec_depend>move_base</exec_depend>
+  <exec_depend>map_server</exec_depend>
+  <exec_depend>tf2</exec_depend>
+</package>
