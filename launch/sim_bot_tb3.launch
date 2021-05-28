@@ -1,31 +1,64 @@
 <launch>
-  <arg name="model" default="$(env TURTLEBOT3_MODEL)" doc="model type [burger, waffle, waffle_pi]"/>
+  <arg name="model" default="waffle" doc="model type [burger, waffle, waffle_pi]"/>
+  <arg name="map_file" default="$(find adhoc_simulations)/maps/house.yaml"/>
   <arg name="set_map_frame"  default="map"/>
-  <arg name="robot_name" default="scottiec_1"/>
+  <arg name="robot_name" default="tb3_99"/>
+  <arg name="tb3_0_prefix" value="$(arg robot_name)"/>
 
-  <param name="robot_description" command="$(find xacro)/xacro --inorder $(find turtlebot3_description)/urdf/turtlebot3_$(arg model).urdf.xacro" />
+	<arg name="initial_pose_x" default="-6.58309602737"/>
+	<arg name="initial_pose_y" default="-0.598859667778"/>
+	<arg name="initial_pose_a" default="1.57"/>
 
-  <group ns="$(arg robot_name)">
-    <include file="$(find adhoc_simulations)/launch/include/single_turtlebot3_ff.launch">
-      <arg name="model" value="$(arg model)"/>
-      <arg name="set_base_frame" value="$(arg robot_name)/base_footprint"/>
-      <arg name="set_odom_frame" value="$(arg robot_name)/odom"/>
-      <arg name="set_scan_frame" value="$(arg robot_name)/base_scan"/>
-      <!-- <arg name="cmd_vel_topic" value="$(arg robot_name)/cmd_vel"/> -->
-      <!-- <arg name="odom_topic" value="$(arg robot_name)/odom"/> -->
-      <!-- <arg name="scan_topic" value="$(arg robot_name)/scan"/> -->
-      <arg name="set_map_frame" value="$(arg set_map_frame)"/>
+	<arg name="set_base_frame" value="$(arg tb3_0_prefix)/base_footprint"/>
+
+	<group ns="$(arg tb3_0_prefix)">
+    <!-- Map server -->
+
+		<include file="$(find adhoc_simulations)/launch/include/single_turtlebot3_ff.launch">      
+			<!-- Misc -->
+			<arg name="model" value="$(arg model)"/>
       <arg name="open_rviz" value="false"/>
-      <arg name="initial_pose_x" default="-6.58309602737"/>
-      <arg name="initial_pose_y" default="-0.598859667778"/>
-      <arg name="initial_pose_a" default="1.57"/>
-      <arg name="move_forward_only" value="false"/>
+
+			<!-- ACML -->
+		  <arg name="scan_topic" default="$(arg tb3_0_prefix)/scan"/>
+      <arg name="set_base_frame" value="$(arg tb3_0_prefix)/base_footprint"/>
+      <!-- <arg name="set_base_frame" value="base_footprint"/> -->
+      <arg name="set_odom_frame" value="$(arg tb3_0_prefix)/odom"/>
+      <arg name="set_scan_frame" value="$(arg tb3_0_prefix)/base_scan"/>
+      <arg name="set_map_frame" value="$(arg set_map_frame)"/>
+      <!-- <arg name="set_map_frame" value="map"/> -->
+      <!-- <arg name="set_map_frame" value="$(arg tb3_0_prefix)/$(arg set_map_frame)"/> -->
+
+			<!-- Move Base -->
+			<arg name="cmd_vel_topic" default="$(arg tb3_0_prefix)/cmd_vel" />
+			<arg name="odom_topic" default="$(arg tb3_0_prefix)/odom" />
+			<arg name="move_forward_only" default="false"/>
+
+			<arg name="initial_pose_x" default="-6.58309602737"/>
+			<arg name="initial_pose_y" default="-0.598859667778"/>
+			<arg name="initial_pose_a" default="1.57"/>
     </include>
 
-    <include file="$(find turtlebot3_bringup)/launch/turtlebot3_remote.launch">
-      <arg name="model" value="$(arg model)" />
-      <arg name="multi_robot_name" value="$(arg robot_name)" />
-    </include>
+		<!-- RSP -->
+		<node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
+      <param name="publish_frequency" type="double" value="50.0" />
+      <param name="prefix_tf_with" value="$(arg tb3_0_prefix)/"/>
+      <param name="tf_prefix" value="$(arg tb3_0_prefix)/"/>
+    </node>
+
+		<param name="robot_description" command="$(find xacro)/xacro --inorder $(find turtlebot3_description)/urdf/turtlebot3_$(arg model).urdf.xacro" />
+
+		<node
+      pkg="gazebo_ros"
+      type="spawn_model"
+      name="spawn_urdf"
+      args="-param robot_description -x $(arg initial_pose_x) -y $(arg initial_pose_y) -Y $(arg initial_pose_a) -robot_namespace $(arg tb3_0_prefix) -urdf -model $(arg tb3_0_prefix)">
+			<param name="tf_prefix" value="$(arg robot_name)" />
+
+			<remap from="odom" to="$(arg robot_name)/odom" />
+			<remap from="base_footprint" to="$(arg robot_name)/base_footprint" />
+
+    </node>
 
   </group>
 
