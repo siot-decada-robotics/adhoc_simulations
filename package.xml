@@ -4,8 +4,10 @@
   <version>1.0.0</version>
   <description>Package of scripts for adhoc simulation launch</description>
   <maintainer email="siotrobotics@gmail.com">Decada Robotics</maintainer>
+  <maintainer email="kaiwen@decadarobotics.com">Lam Kaiwen</maintainer>
+
   <license>Apache 2.0</license>
-  <author email="scottcjx.w@gmail.com">Scott Cheng</author>
+  <author email="scottcjx.w@gmail.com">Scott CJX</author>
 
   <buildtool_depend>catkin</buildtool_depend>
 

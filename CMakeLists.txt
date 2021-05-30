@@ -19,31 +19,7 @@ if (catkin_FOUND)
   )
 
   install(
-    DIRECTORY rviz
-    # DESTINATION share/${PROJECT_NAME}
-    DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
-  )
-
-  install(
-    DIRECTORY launch
-    # DESTINATION share/${PROJECT_NAME}
-    DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
-  )
-
-  install(
-    DIRECTORY maps
-    # DESTINATION share/${PROJECT_NAME}
-    DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
-  )
-
-  install(
-    DIRECTORY worlds
-    # DESTINATION share/${PROJECT_NAME}
-    DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
-  )
-
-  install(
-    DIRECTORY models
+    DIRECTORY launch maps models rviz tb3_urdf world
     # DESTINATION share/${PROJECT_NAME}
     DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
   )
