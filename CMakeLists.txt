@@ -5,7 +5,7 @@ project(adhoc_simulations)
 
 #===============================================================================
 find_package(catkin QUIET)
-find_package(gazebo REQUIRED)
+find_package(GAZEBO REQUIRED)
 
 
 if (catkin_FOUND)
@@ -20,27 +20,32 @@ if (catkin_FOUND)
 
   install(
     DIRECTORY rviz
-    DESTINATION share/${PROJECT_NAME}
+    # DESTINATION share/${PROJECT_NAME}
+    DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
   )
 
   install(
     DIRECTORY launch
-    DESTINATION share/${PROJECT_NAME}
+    # DESTINATION share/${PROJECT_NAME}
+    DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
   )
 
   install(
     DIRECTORY maps
-    DESTINATION share/${PROJECT_NAME}
+    # DESTINATION share/${PROJECT_NAME}
+    DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
   )
 
   install(
     DIRECTORY worlds
-    DESTINATION share/${PROJECT_NAME}
+    # DESTINATION share/${PROJECT_NAME}
+    DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
   )
 
   install(
     DIRECTORY models
-    DESTINATION share/${PROJECT_NAME}
+    # DESTINATION share/${PROJECT_NAME}
+    DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
   )
 
 else()
