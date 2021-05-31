@@ -1,5 +1,3 @@
-<author email="scottcjx.w@gmail.com">Scott CJX</author>
-
 <launch>
   <arg name="open_rviz" default="false"/>
   <arg name="set_map_frame"  default="map"/>
@@ -7,6 +5,8 @@
   <arg name="world_file" default="$(find adhoc_simulations)/worlds/mbc.building.world"/>
   <arg name="headless"  default="false"/>
   <arg name="gui"  default="true"/>
+
+  <!-- <include file="$(find adhoc_simulations)/launch/include/gazebo_setup.launch"></include> -->
 
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
     <arg name="world_name" value="$(arg world_file)"/>
