@@ -1,5 +1,4 @@
 <launch>
-  <arg name="open_rviz" default="false"/>
   <arg name="set_map_frame"  default="map"/>
   <arg name="map_file" default="$(find adhoc_simulations)/maps/house.yaml"/>
   <arg name="world_file" default="$(find turtlebot3_gazebo)/worlds/turtlebot3_house.world"/>

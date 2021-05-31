@@ -1,9 +1,0 @@
-<launch>
-    <node pkg="adhoc_simulations"
-        name="gazebo_setup"
-        output="screen"
-        type="gazebo_setup.sh">
-    </node>
-
-    <!-- <param name="gazebo_model_path" command="$(find adhoc_simulations)/scripts/gazebo_setup.sh GAZEBO_MODEL_PATH=$(find adhoc_simulations)/models"/> -->
-</launch>
