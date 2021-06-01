@@ -26,7 +26,7 @@ Panels:
     Name: Time
     SyncMode: 0
     SyncSource: LaserScan
-  - Class: ff_rviz_plugins_ros1/FFNavToolPanel
+  - Class: rviz_plugins_ros1/FFNavToolPanel
     Name: FFNavToolPanel
 Preferences:
   PromptSaveOnExit: true

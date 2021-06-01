@@ -20,4 +20,7 @@
 		<param name="frame_id" value="$(arg set_map_frame)"/>
 	</node>
 
+  <node pkg="rviz" type="rviz" name="rviz" required="true"
+      args="-d $(find adhoc_simulations)/rviz/multi_adhoc_turtlebot3.rviz"/>
+
 </launch>
