@@ -47,6 +47,7 @@ roslaunch turtlebot3_gazebo empty_turtlebot3_house.launch
 
 Launch the remaining robots in separate terminals
 ```
+export TURTLEBOT3_MODEL=burger
 roslaunch turtlebot3_gazebo ad_hoc_bot0.launch 
 ```
 ```
