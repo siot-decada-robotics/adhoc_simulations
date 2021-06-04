@@ -200,26 +200,6 @@
       <pose>20.368536098213024 -23.808260358018114 0.0 0 0 1.5708</pose>
       <static>True</static>
     </include>
-    <include>
-      <name>tinyRobot1</name>
-      <uri>model://TinyRobot</uri>
-      <pose>22.858547564160936 -12.49798808282204 0.0 0 0 4.7432138953920955</pose>
-    </include>
-    <include>
-      <name>tinyRobot2</name>
-      <uri>model://TinyRobot</uri>
-      <pose>39.2263396653819 -12.45008680744747 0.0 0 0 4.787100311947599</pose>
-    </include>
-    <include>
-      <name>Locust1</name>
-      <uri>model://Locust</uri>
-      <pose>26.302369225367293 -11.982747226039198 0.0 0 0 4.692393992003806</pose>
-    </include>
-    <include>
-      <name>Locust2</name>
-      <uri>model://Locust</uri>
-      <pose>28.191801870095816 -25.216498898614642 0.0 0 0 -3.115722415738105</pose>
-    </include>
 
     <model name="office_door">
       <pose>41.16495586577963 -11.327870466825992 0.0 0 0 3.141592653589793</pose>
