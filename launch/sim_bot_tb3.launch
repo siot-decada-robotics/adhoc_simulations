@@ -17,7 +17,7 @@
       <arg name="set_odom_frame" value="$(arg robot_name)/odom"/>
       <arg name="set_scan_frame" value="$(arg robot_name)/base_scan"/>
       <arg name="set_map_frame" value="$(arg set_map_frame)"/>
-      <arg name="scan_topic" value="$(arg robot_name)/scan"/>
+      <!-- <arg name="scan_topic" value="$(arg robot_name)/scan"/> -->
       <arg name="open_rviz" value="false"/>
       
       <arg name="bot_x_pos" value="$(arg bot_x_pos)"/>
