@@ -1,7 +1,7 @@
 <launch>
-
 	<arg name="model" default="v1m"/>
   <arg name="open_rviz" default="false"/>
+  <arg name="robot_name" default="caato_0"/>
 
 	<!-- AMCL Arguments -->
   <arg name="scan_topic"     default="scan"/>
@@ -67,6 +67,8 @@
     <param name="destination_frame" value="$(arg destination_frame)"/>
     <param name="cloud_destination_topic" value="$(arg cloud_destination_topic)"/>
     <param name="scan_destination_topic" value="$(arg scan_destination_topic)"/>
+    <!-- <param name="scan_destination_topic" value="$(arg robot_name)/scan"/> -->
+
     <param name="laserscan_topics" value ="$(arg laserscan_topics)" /> <!-- LIST OF THE LASER SCAN TOPICS TO SUBSCRIBE -->
 
     <param name="angle_min" value="-3.1415926"/>
