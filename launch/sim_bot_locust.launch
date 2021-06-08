@@ -9,7 +9,7 @@
   <arg name="bot_a_pos" default="1.57"/>
 
   <group ns = "$(arg robot_name)">
-    <include file="$(find adhoc_simulations)/launch/include/single_caato.launch">
+    <include file="$(find adhoc_simulations)/launch/include/single_locust.launch">
       <arg name="model" value="$(arg model)"/>
       <arg name="robot_name" value="$(arg robot_name)"/>
 
