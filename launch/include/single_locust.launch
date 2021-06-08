@@ -1,7 +1,7 @@
 <launch>
 	<arg name="model" default="v1m"/>
   <arg name="open_rviz" default="false"/>
-  <arg name="robot_name" default="caato_0"/>
+  <arg name="robot_name" default="locust_0"/>
 
 	<!-- AMCL Arguments -->
   <arg name="scan_topic"     default="scan"/>
@@ -30,7 +30,7 @@
   <arg name="move_forward_only" default="false"/>
 
   <param name="robot_description"
-    command="$(find xacro)/xacro --inorder '$(find caato_description)/urdf/caato_$(arg model).urdf.xacro' botname:=$(arg robot_name)" />
+    command="$(find xacro)/xacro --inorder '$(find locust_description)/urdf/locust_$(arg model).urdf.xacro' botname:=$(arg robot_name)" />
 
   <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" output="screen">
     <param name="publish_frequency" type="double" value="50.0" />
@@ -61,15 +61,15 @@
   <!-- move_base -->
   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
     <param name="base_local_planner" value="dwa_local_planner/DWAPlannerROS" />
-    <rosparam file="$(find caato_navigation)/param/costmap_common_params.yaml" command="load" ns="global_costmap" />
-    <rosparam file="$(find caato_navigation)/param/costmap_common_params.yaml" command="load" ns="local_costmap" />
-    <rosparam file="$(find caato_navigation)/param/local_costmap_params.yaml" command="load" />
-    <rosparam file="$(find caato_navigation)/param/global_costmap_params.yaml" command="load" />
-    <rosparam file="$(find caato_navigation)/param/move_base_params.yaml" command="load" />
-    <rosparam file="$(find caato_navigation)/param/dwa_local_planner_params.yaml" command="load" />
+    <rosparam file="$(find locust_navigation)/param/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find locust_navigation)/param/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find locust_navigation)/param/local_costmap_params.yaml" command="load" />
+    <rosparam file="$(find locust_navigation)/param/global_costmap_params.yaml" command="load" />
+    <rosparam file="$(find locust_navigation)/param/move_base_params.yaml" command="load" />
+    <rosparam file="$(find locust_navigation)/param/dwa_local_planner_params.yaml" command="load" />
     <remap from="cmd_vel" to="$(arg cmd_vel_topic)"/>
-    <remap from="scan" to="$(arg scan_topic)"/>
     <remap from="odom" to="$(arg odom_topic)"/>
+    <remap from="scan" to="$(arg scan_topic)"/>
     <param name="DWAPlannerROS/min_vel_x" value="0.0" if="$(arg move_forward_only)" />
     
     <param name="local_costmap/scan/sensor_frame"   value="$(arg set_scan_frame)"/>
@@ -103,7 +103,7 @@
 	<!-- rviz -->
 	<group if="$(arg open_rviz)"> 
 		<node pkg="rviz" type="rviz" name="rviz" required="true"
-					args="-d $(find caato_navigation)/rviz/caato_navigation.rviz"/>
+					args="-d $(find locust_navigation)/rviz/locust_navigation.rviz"/>
 	</group>
 
 </launch>
