@@ -14,7 +14,7 @@
       <uri>model://mbc_office_L10</uri>
       <pose>0 0 0.0 0 0 0</pose>
     </include>
-    
+  
     <gui>
       <camera name="gui_camera">
         <pose>5.876012603063672 -39.07439102613174 10 0 0.6 1.57</pose>
