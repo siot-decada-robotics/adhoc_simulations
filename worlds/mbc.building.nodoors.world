@@ -10,8 +10,8 @@
     </include>
 
     <include>
-      <name>mbc_building_L1</name>
-      <uri>model://mbc_building_L1</uri>
+      <name>mbc_office_L10</name>
+      <uri>model://mbc_office_L10</uri>
       <pose>0 0 0.0 0 0 0</pose>
     </include>
     
