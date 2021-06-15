@@ -6,7 +6,7 @@
   <arg name="headless"  default="false"/>
   <arg name="gui"  default="true"/>
 
-  <env name="GAZEBO_MODEL_PATH" value="$(find adhoc_simulations)/models" />
+  <env name="GAZEBO_MODEL_PATH" value="$(find adhoc_simulations)/models" />>
 
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
     <arg name="world_name" value="$(arg world_file)"/>
