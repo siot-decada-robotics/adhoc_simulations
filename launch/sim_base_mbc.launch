@@ -6,7 +6,7 @@
   <arg name="headless"  default="false"/>
   <arg name="gui"  default="true"/>
 
-  <env name="GAZEBO_MODEL_PATH" value="$(find adhoc_simulations)/models" />>
+  <env name="GAZEBO_MODEL_PATH" value="$(find adhoc_simulations)/models" />
 
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
     <arg name="world_name" value="$(arg world_file)"/>
@@ -22,5 +22,9 @@
       args="$(arg map_file)">
     <param name="frame_id" value="$(arg set_map_frame)"/>
   </node>
+  
+  <!-- launch the overall visualization on rviz -->
+  <node pkg="rviz" type="rviz" name="rviz" required="true"
+        args="-d $(find adhoc_simulations)/rviz/multi_caato_mbc_ff.rviz"/>
 
 </launch>
