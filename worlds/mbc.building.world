@@ -1,5 +1,5 @@
 <sdf version="1.7">
-  <world name="world">
+  <world name="mbc_office_L10_world">
     <scene>
       <ambient>0.8 0.8 0.8 1.0</ambient>
       <background>0 0 0</background>
@@ -10,11 +10,11 @@
     </include>
 
     <include>
-      <name>mbc_building_L1</name>
-      <uri>model://mbc_building_L1</uri>
+      <name>mbc_office_L10</name>
+      <uri>model://mbc_office_L10</uri>
       <pose>0 0 0.0 0 0 0</pose>
     </include>
-    
+
     <gui>
       <camera name="gui_camera">
         <pose>5.876012603063672 -39.07439102613174 10 0 0.6 1.57</pose>

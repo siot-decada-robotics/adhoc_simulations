@@ -3,10 +3,20 @@
   <arg name="set_map_frame"  default="map"/>
   <arg name="robot_name" default="tb3_0"/>
 
-  <arg name="bot_x_pos" default="-1.0"/>
-  <arg name="bot_y_pos" default="1.0"/>
-  <arg name="bot_z_pos" default="0.0"/>
-  <arg name="bot_a_pos" default="1.57"/>
+  <arg name="origin_x_pos" default="22.0"/>
+  <arg name="origin_y_pos" default="-17.0"/>
+  <arg name="origin_z_pos" default="0.0"/>
+  <arg name="origin_a_pos" default="1.57"/>
+
+  <arg name="offset_x_pos" default="0.0"/>
+  <arg name="offset_y_pos" default="0.0"/>
+  <arg name="offset_z_pos" default="0.0"/>
+  <arg name="offset_a_pos" default="0.0"/>
+  
+  <arg name="bot_x_pos" default="$(eval arg('origin_x_pos') + arg('offset_x_pos'))"/>
+  <arg name="bot_y_pos" default="$(eval arg('origin_y_pos') + arg('offset_y_pos'))"/>
+  <arg name="bot_z_pos" default="$(eval arg('origin_z_pos') + arg('offset_z_pos'))"/>
+  <arg name="bot_a_pos" default="$(eval arg('origin_a_pos') + arg('offset_a_pos'))"/>
 
   <group ns = "$(arg robot_name)">
     <include file="$(find adhoc_simulations)/launch/include/single_turtlebot3.launch">
@@ -24,6 +34,16 @@
       <arg name="bot_y_pos" value="$(arg bot_y_pos)"/>
       <arg name="bot_z_pos" value="$(arg bot_z_pos)"/>
       <arg name="bot_a_pos" value="$(arg bot_z_pos)"/>
+
+      <arg name="origin_x_pos" value="$(arg origin_x_pos)"/>
+      <arg name="origin_y_pos" value="$(arg origin_y_pos)"/>
+      <arg name="origin_z_pos" value="$(arg origin_z_pos)"/>
+      <arg name="origin_a_pos" value="$(arg origin_a_pos)"/>
+    
+      <arg name="offset_x_pos" value="$(arg offset_x_pos)"/>
+      <arg name="offset_y_pos" value="$(arg offset_y_pos)"/>
+      <arg name="offset_z_pos" value="$(arg offset_z_pos)"/>
+      <arg name="offset_a_pos" value="$(arg offset_a_pos)"/>
       
     </include>
   </group>

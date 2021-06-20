@@ -1,19 +1,19 @@
 <?xml version='1.0' encoding='utf-8'?>
 <sdf version="1.7">
-  <model name="mbc_building_L1">
+  <model name="mbc_office_L10">
     <static>true</static>
     <link name="floor_1">
       <visual name="visual">
         <geometry>
           <mesh>
-            <uri>model://mbc_building_L1/meshes/floor_1.obj</uri>
+            <uri>model://mbc_office_L10/meshes/floor_1.obj</uri>
           </mesh>
         </geometry>
       </visual>
       <collision name="collision">
         <geometry>
           <mesh>
-            <uri>model://mbc_building_L1/meshes/floor_1.obj</uri>
+            <uri>model://mbc_office_L10/meshes/floor_1.obj</uri>
           </mesh>
         </geometry>
         <surface>
@@ -27,14 +27,14 @@
       <visual name="visual">
         <geometry>
           <mesh>
-            <uri>model://mbc_building_L1/meshes/floor_2.obj</uri>
+            <uri>model://mbc_office_L10/meshes/floor_2.obj</uri>
           </mesh>
         </geometry>
       </visual>
       <collision name="collision">
         <geometry>
           <mesh>
-            <uri>model://mbc_building_L1/meshes/floor_2.obj</uri>
+            <uri>model://mbc_office_L10/meshes/floor_2.obj</uri>
           </mesh>
         </geometry>
         <surface>
@@ -48,14 +48,14 @@
       <visual name="wall_1">
         <geometry>
           <mesh>
-            <uri>model://mbc_building_L1/meshes/wall_1.obj</uri>
+            <uri>model://mbc_office_L10/meshes/wall_1.obj</uri>
           </mesh>
         </geometry>
       </visual>
       <collision name="collision">
         <geometry>
           <mesh>
-            <uri>model://mbc_building_L1/meshes/wall_1.obj</uri>
+            <uri>model://mbc_office_L10/meshes/wall_1.obj</uri>
           </mesh>
         </geometry>
         <surface>

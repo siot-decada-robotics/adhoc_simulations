@@ -7,7 +7,7 @@
   <maintainer email="kaiwen@decadarobotics.com">Lam Kaiwen</maintainer>
 
   <license>Apache 2.0</license>
-  <author email="scottcjx.w@gmail.com">Scott CJX</author>
+  <author email="code@scottcjx.com">Scott CJX</author>
 
   <buildtool_depend>catkin</buildtool_depend>
   <buildtool_depend>ament</buildtool_depend>
@@ -23,7 +23,6 @@
   <export>
     <gazebo_ros gazebo_media_path="${prefix}"/>
     <gazebo_ros gazebo_model_path="${prefix}/models"/>
-    <!-- <gazebo_ros gazebo_model_path="/home/gbtbedge001_admin/scott_spaces/simulations_ws/install/adhoc_simulations/share/adhoc_simulations/models"/> -->
   </export>
 
 </package>

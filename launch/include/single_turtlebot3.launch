@@ -10,14 +10,20 @@
   <arg name="set_scan_frame" default="base_scan"/>
   <arg name="set_map_frame"  default="map"/>
 
-  <arg name="bot_x_pos" default="22.0"/>
-  <arg name="bot_y_pos" default="-17.0"/>
-  <arg name="bot_z_pos" default="1.0"/>
-  <arg name="bot_a_pos" default="1.57"/>
+  <arg name="origin_x_pos" default="22.0"/>
+  <arg name="origin_y_pos" default="-17.0"/>
+  <arg name="origin_z_pos" default="0.0"/>
+  <arg name="origin_a_pos" default="1.57"/>
 
-  <arg name="initial_pose_x" value="$(arg bot_x_pos)"/>
-  <arg name="initial_pose_y" value="$(arg bot_y_pos)"/>
-  <arg name="initial_pose_a" value="$(arg bot_a_pos)"/>
+  <arg name="offset_x_pos" default="0.0"/>
+  <arg name="offset_y_pos" default="0.0"/>
+  <arg name="offset_z_pos" default="0.0"/>
+  <arg name="offset_a_pos" default="0.0"/>
+  
+  <arg name="bot_x_pos" default="$(eval arg('origin_x_pos') + arg('offset_x_pos'))"/>
+  <arg name="bot_y_pos" default="$(eval arg('origin_y_pos') + arg('offset_y_pos'))"/>
+  <arg name="bot_z_pos" default="$(eval arg('origin_z_pos') + arg('offset_z_pos'))"/>
+  <arg name="bot_a_pos" default="$(eval arg('origin_a_pos') + arg('offset_a_pos'))"/>
 
   <!-- move_base Arguments -->
   <arg name="cmd_vel_topic" default="cmd_vel" />
@@ -49,9 +55,9 @@
     <param name="transform_tolerance"       value="0.5"/>
     <param name="recovery_alpha_slow"       value="0.00"/>
     <param name="recovery_alpha_fast"       value="0.00"/>
-    <param name="initial_pose_x"            value="$(arg initial_pose_x)"/>
-    <param name="initial_pose_y"            value="$(arg initial_pose_y)"/>
-    <param name="initial_pose_a"            value="$(arg initial_pose_a)"/>
+    <param name="initial_pose_x"            value="$(arg bot_x_pos)"/>
+    <param name="initial_pose_y"            value="$(arg bot_y_pos)"/>
+    <param name="initial_pose_a"            value="$(arg bot_a_pos)"/>
     <param name="gui_publish_rate"          value="50.0"/>
 
     <remap from="scan"                      to="$(arg scan_topic)"/>
