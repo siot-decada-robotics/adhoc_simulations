@@ -2,6 +2,7 @@
 <robot name="turtlebot3_burger_sim" xmlns:xacro="http://ros.org/wiki/xacro">
   <xacro:arg name="laser_visual" default="false"/>
   <xacro:arg name="imu_visual"   default="false"/>
+  
 
   <gazebo reference="base_link">
     <material>Gazebo/DarkGrey</material>
@@ -98,6 +99,17 @@
       </imu>
     </plugin>
   </gazebo>
+
+  <gazebo>
+    <plugin name="battery_plugin" filename="libgazebo_ros_battery.so">
+      <battery_topic>/$(arg botname)_node/$(arg botname)/battery_state</battery_topic>
+      <consumer_topic>/$(arg botname)/consumer</consumer_topic>
+      <use_nonlinear_model>True</use_nonlinear_model>
+      <update_rate>10.0</update_rate>
+      <rosDebugLevel>Debug</rosDebugLevel>
+    </plugin>
+  </gazebo>
+
 
   <gazebo reference="base_scan">
     <material>Gazebo/FlatBlack</material>

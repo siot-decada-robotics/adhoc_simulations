@@ -31,8 +31,9 @@
 
   <param name="robot_description"
     command="$(find xacro)/xacro --inorder '$(find locust_description)/urdf/locust_$(arg model).urdf.xacro' botname:=$(arg robot_name)" />
-
+    
   <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" output="screen">
+    <!--remap from="robot_description" to="first_robot_robot_description"/-->
     <param name="publish_frequency" type="double" value="50.0" />
     <param name="tf_prefix" value="$(arg robot_name)/" />
     <param name="prefix_tf_with" value="$(arg robot_name)/" />
@@ -42,6 +43,7 @@
     pkg="gazebo_ros"
     type="spawn_model"
     args="-urdf -model $(arg robot_name) -x $(arg bot_x_pos) -y $(arg bot_y_pos) -z $(arg bot_z_pos) -Y $(arg bot_a_pos) -param robot_description" />
+    
 
   <!-- AMCL -->
   <node pkg="amcl" type="amcl" name="amcl">
@@ -60,17 +62,17 @@
 
   <!-- move_base -->
   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
-    <param name="base_local_planner" value="dwa_local_planner/DWAPlannerROS" />
+    <param name="base_local_planner" value="teb_local_planner/TebLocalPlannerROS" />
     <rosparam file="$(find locust_navigation)/param/costmap_common_params.yaml" command="load" ns="global_costmap" />
     <rosparam file="$(find locust_navigation)/param/costmap_common_params.yaml" command="load" ns="local_costmap" />
     <rosparam file="$(find locust_navigation)/param/local_costmap_params.yaml" command="load" />
     <rosparam file="$(find locust_navigation)/param/global_costmap_params.yaml" command="load" />
     <rosparam file="$(find locust_navigation)/param/move_base_params.yaml" command="load" />
-    <rosparam file="$(find locust_navigation)/param/dwa_local_planner_params.yaml" command="load" />
+    <rosparam file="$(find locust_navigation)/param/teb_local_planner_params.yaml" command="load" />
     <remap from="cmd_vel" to="$(arg cmd_vel_topic)"/>
-    <remap from="odom" to="$(arg odom_topic)"/>
     <remap from="scan" to="$(arg scan_topic)"/>
-    <param name="DWAPlannerROS/min_vel_x" value="0.0" if="$(arg move_forward_only)" />
+    <remap from="odom" to="$(arg odom_topic)"/>
+    <!-- <param name="DWAPlannerROS/min_vel_x" value="0.0" if="$(arg move_forward_only)" /> -->
     
     <param name="local_costmap/scan/sensor_frame"   value="$(arg set_scan_frame)"/>
     <param name="local_costmap/global_frame"        value="$(arg set_odom_frame)"/>
@@ -103,7 +105,7 @@
 	<!-- rviz -->
 	<group if="$(arg open_rviz)"> 
 		<node pkg="rviz" type="rviz" name="rviz" required="true"
-					args="-d $(find locust_navigation)/rviz/locust_navigation.rviz"/>
+					args="-d $(find caato_navigation)/rviz/caato_navigation.rviz"/>
 	</group>
 
 </launch>

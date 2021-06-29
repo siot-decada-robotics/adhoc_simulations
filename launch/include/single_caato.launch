@@ -31,7 +31,7 @@
 
   <param name="robot_description"
     command="$(find xacro)/xacro --inorder '$(find caato_description)/urdf/caato_$(arg model).urdf.xacro' botname:=$(arg robot_name)" />
-
+    
   <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" output="screen">
     <param name="publish_frequency" type="double" value="50.0" />
     <param name="tf_prefix" value="$(arg robot_name)/" />
@@ -42,6 +42,7 @@
     pkg="gazebo_ros"
     type="spawn_model"
     args="-urdf -model $(arg robot_name) -x $(arg bot_x_pos) -y $(arg bot_y_pos) -z $(arg bot_z_pos) -Y $(arg bot_a_pos) -param robot_description" />
+    
 
   <!-- AMCL -->
   <node pkg="amcl" type="amcl" name="amcl">

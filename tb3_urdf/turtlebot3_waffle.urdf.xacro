@@ -1,8 +1,8 @@
 <?xml version="1.0" ?>
 <robot name="turtlebot3_waffle" xmlns:xacro="http://ros.org/wiki/xacro">
   <xacro:arg name="botname" default=""/>
-  <xacro:include filename="$(find adhoc_simulations)/urdf/common_properties.xacro"/>
-  <xacro:include filename="$(find adhoc_simulations)/urdf/turtlebot3_waffle.gazebo.xacro"/>
+  <xacro:include filename="$(find adhoc_simulations)/tb3_urdf/common_properties.xacro"/>
+  <xacro:include filename="$(find adhoc_simulations)/tb3_urdf/turtlebot3_waffle.gazebo.xacro"/>
 
   <xacro:property name="r200_cam_rgb_px" value="0.005"/>
   <xacro:property name="r200_cam_rgb_py" value="0.018"/>
