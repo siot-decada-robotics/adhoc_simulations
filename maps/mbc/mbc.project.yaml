@@ -1,0 +1,6 @@
+building:
+  filename: mbc.building.yaml
+name: mbc
+traffic_maps:
+  {}
+version: 1
