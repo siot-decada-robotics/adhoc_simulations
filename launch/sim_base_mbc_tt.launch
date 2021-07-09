@@ -1,0 +1,33 @@
+<launch>
+
+  <arg name="model" default="burger" doc="model type [burger, waffle, waffle_pi]"/>
+  <arg name="x_pos" default="22.0"/>
+  <arg name="y_pos" default="-17.0"/>
+  <arg name="z_pos" default="0.5"/>
+  <arg name="open_rviz" default="false"/>
+  <arg name="world_file" default="$(find adhoc_simulations)/worlds/mbc.world"/>
+  <arg name="headless"  default="false"/>
+  <arg name="gui"  default="true"/>
+
+  <env name="GAZEBO_MODEL_PATH" value="$(find adhoc_simulations)/models" />
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(arg world_file)"/>
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui" value="$(arg gui)"/>
+    <arg name="headless" value="$(arg headless)"/>
+    <arg name="debug" value="false"/>
+  </include>
+
+  <param name="robot_description" command="$(find xacro)/xacro --inorder $(find turtlebot3_description)/urdf/turtlebot3_$(arg model).urdf.xacro" />
+
+  <node pkg="gazebo_ros" type="spawn_model" name="spawn_urdf"  args="-urdf -model turtlebot3_$(arg model) -x $(arg x_pos) -y $(arg y_pos) -z $(arg z_pos) -param robot_description" />
+  
+  <!-- Mod by Tim: See http://library.isr.ist.utl.pt/docs/roswiki/tf.html#static_transform_publisher -->
+  <!-- node pkg="tf" type="static_transform_publisher" name="map_odom_broadcaster" args="0 0 0 0 0 0 map odom 100" / 
+  <node pkg="tf" type="static_transform_publisher" name="base_footprint_broadcaster" args="0 0 0 0 0 0 odom base_footprint 100" />
+  <node pkg="tf" type="static_transform_publisher" name="base_link_broadcaster" args="0 0 0 0 0 0 base_footprint base_link 100" />  
+  <node pkg="tf" type="static_transform_publisher" name="base_scan_broadcaster" args="0 0 0 0 0 0 base_link base_scan 100" /> -->
+
+</launch>

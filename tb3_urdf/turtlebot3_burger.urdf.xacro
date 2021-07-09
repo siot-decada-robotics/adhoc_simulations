@@ -5,7 +5,6 @@
   <xacro:include filename="$(find adhoc_simulations)/tb3_urdf/turtlebot3_burger.gazebo.xacro" />
 
   <link name="base_footprint"/>
-
   <!-- added -->
   
 

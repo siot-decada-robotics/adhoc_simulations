@@ -54,7 +54,7 @@
       <odometryFrame>$(arg botname)/odom</odometryFrame>
       <odometrySource>world</odometrySource>
       <publishOdomTF>true</publishOdomTF>
-      <robotBaseFrame>$(arg botname)/base_footprint</robotBaseFrame>
+      <robotBaseFrame>$(arg botname)/odom/processed</robotBaseFrame>
       <publishWheelTF>false</publishWheelTF>
       <publishTf>true</publishTf>
       <publishWheelJointState>true</publishWheelJointState>

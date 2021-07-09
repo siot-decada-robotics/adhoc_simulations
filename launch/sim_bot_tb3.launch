@@ -3,9 +3,9 @@
   <arg name="set_map_frame"  default="map"/>
   <arg name="robot_name" default="tb3_0"/>
 
-  <arg name="bot_x_pos" default="-1.0"/>
-  <arg name="bot_y_pos" default="1.0"/>
-  <arg name="bot_z_pos" default="0.0"/>
+  <arg name="bot_x_pos" default="22.0"/>
+  <arg name="bot_y_pos" default="-17.0"/>
+  <arg name="bot_z_pos" default="20.5"/>
   <arg name="bot_a_pos" default="1.57"/>
 
   <group ns = "$(arg robot_name)">
@@ -34,7 +34,7 @@
       type="free_fleet_client_ros1" output="screen">
     <param name="fleet_name" type="string" value="turtlebot3"/>
     <param name="robot_name" type="string" value="$(arg robot_name)"/>
-    <param name="level_name" type="string" value="house"/>
+    <param name="level_name" type="string" value="L10"/>
     <param name="dds_domain" type="int" value="42"/>
     <param name="max_dist_to_first_waypoint" type="double" value="10.0"/>
     <param name="battery_state_topic" value="$(arg robot_name)/battery_state"/>

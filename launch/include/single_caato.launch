@@ -1,6 +1,6 @@
 <launch>
 	<arg name="model" default="v1m"/>
-  <arg name="open_rviz" default="false"/>
+  <arg name="open_rviz" default="true"/>
   <arg name="robot_name" default="caato_0"/>
 
 	<!-- AMCL Arguments -->
@@ -12,7 +12,7 @@
   
   <arg name="bot_x_pos" default="22.0"/>
   <arg name="bot_y_pos" default="-17.0"/>
-  <arg name="bot_z_pos" default="1.0"/>
+  <arg name="bot_z_pos" default="21.0"/>
   <arg name="bot_a_pos" default="1.57"/>
 
   <arg name="initial_pose_x" value="$(arg bot_x_pos)"/>
@@ -96,8 +96,8 @@
     <param name="angle_max" value="3.1415926"/>
     <param name="angle_increment" value="0.004358"/>
     <param name="scan_time" value="0.025"/>
-    <param name="range_min" value="0.10"/>
-    <param name="range_max" value="10.0"/>
+    <param name="range_min" value="0.010"/>
+    <param name="range_max" value="12.0"/>
 	</node>
 
 	<!-- rviz -->

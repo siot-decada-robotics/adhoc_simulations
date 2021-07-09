@@ -1,7 +1,7 @@
 <launch>
   <arg name="open_rviz" default="false"/>
   <arg name="set_map_frame"  default="map"/>
-  <arg name="map_file" default="$(find adhoc_simulations)/maps/mbc/lidar_map/mbc.yaml"/>
+  <arg name="map_file" default="$(find adhoc_simulations)/maps/mbc_L9.yaml"/>
   <arg name="world_file" default="$(find adhoc_simulations)/worlds/mbc.world"/>
   <arg name="headless"  default="false"/>
   <arg name="gui"  default="true"/>
@@ -23,8 +23,8 @@
     <param name="frame_id" value="$(arg set_map_frame)"/>
   </node>
   
-  <!-- launch the overall visualization on rviz -->
+  <!-- launch the overall visualization on rviz  -->
   <node pkg="rviz" type="rviz" name="rviz" required="true"
-        args="-d $(find adhoc_simulations)/rviz/multi_caato_mbc_ff.rviz"/>
+        args="-d $(find adhoc_simulations)/rviz/multi_adhoc_turtlebot3.rviz"/> 
 
 </launch>
