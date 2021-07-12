@@ -4,8 +4,8 @@
   <arg name="robot_name" default="tb3_0"/>
 
   <arg name="bot_x_pos" default="22.0"/>
-  <arg name="bot_y_pos" default="-17.0"/>
-  <arg name="bot_z_pos" default="20.5"/>
+  <arg name="bot_y_pos" default="-12.0"/>
+  <arg name="bot_z_pos" default="0.5"/>
   <arg name="bot_a_pos" default="1.57"/>
 
   <group ns = "$(arg robot_name)">
