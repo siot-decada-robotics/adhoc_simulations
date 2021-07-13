@@ -1,0 +1,114 @@
+<launch>
+
+  <arg name="open_rviz" default="false"/>
+  <arg name="set_map_frame"  default="map"/>
+  <arg name="map_file" default="$(find adhoc_simulations)/maps/mbc/mbc_L9_simulation_map.yaml"/>
+  <arg name="world_file" default="$(find adhoc_simulations)/worlds/mbc.world"/>
+  <arg name="headless"  default="false"/>
+  <arg name="gui"  default="true"/>
+
+  <env name="GAZEBO_MODEL_PATH" value="$(find adhoc_simulations)/models" />
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(arg world_file)"/>
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui" value="$(arg gui)"/>
+    <arg name="headless" value="$(arg headless)"/>
+    <arg name="debug" value="false"/>
+  </include>
+
+  <!-- Map server -->
+  <node pkg="map_server" name="map_server" type="map_server" 
+      args="$(arg map_file)">
+    <param name="frame_id" value="$(arg set_map_frame)"/>
+  </node>
+  
+  
+  <!-- launch the navigation stacks of 3 turtlebot3s-->
+  <arg name="model" default="burger" doc="model type [burger, waffle, waffle_pi]"/>
+  <arg name="tb3_0_prefix" value="tb3_0"/>
+  
+  <group ns="$(arg tb3_0_prefix)">
+    <include file="$(find adhoc_simulations)/launch/include/single_turtlebot3_dwaplanner.launch">
+      <arg name="model" value="$(arg model)"/>
+      <arg name="robot_name" value="$(arg tb3_0_prefix)"/>
+
+      <arg name="set_base_frame" value="$(arg tb3_0_prefix)/base_footprint"/>
+      <arg name="set_odom_frame" value="$(arg tb3_0_prefix)/odom"/>
+      <arg name="set_scan_frame" value="$(arg tb3_0_prefix)/base_scan"/>
+      <arg name="set_map_frame" value="$(arg set_map_frame)"/>
+      <!-- <arg name="scan_topic" value="$(arg robot_name)/scan"/> -->
+      <arg name="open_rviz" value="false"/>
+      
+      <arg name="bot_x_pos" value="16.45"/>
+      <arg name="bot_y_pos" value="-28.38"/>
+      <arg name="bot_z_pos" value="0.0"/>
+      <arg name="bot_a_pos" value="1.57"/>
+      
+    </include>
+  </group>
+  
+  <!-- launch the free fleet clients of the turtlebot3s-->
+  <node name="$(arg tb3_0_prefix)_free_fleet_client_node" 
+      pkg="free_fleet_client_ros1"
+      type="free_fleet_client_ros1" output="screen">
+    <param name="fleet_name" type="string" value="turtlebot3"/>
+    <param name="robot_name" type="string" value="$(arg tb3_0_prefix)"/>
+    <param name="level_name" type="string" value="L9"/>
+    <param name="dds_domain" type="int" value="42"/>
+    <param name="max_dist_to_first_waypoint" type="double" value="10.0"/>
+    <param name="battery_state_topic" value="$(arg tb3_0_prefix)/battery_state"/>
+    <param name="robot_frame" value="$(arg tb3_0_prefix)/base_footprint"/>
+    <param name="move_base_server_name" value="$(arg tb3_0_prefix)/move_base"/>
+  </node>
+
+
+  <!-- launch the nav stack of caato-->
+  <arg name="caato_model" default="v1m"/>
+  <arg name="caato_name" default="caato_0"/>
+
+  <group ns = "$(arg caato_name)">
+    <include file="$(find adhoc_simulations)/launch/include/single_caato.launch">
+      <arg name="model" value="$(arg caato_model)"/>
+      <arg name="robot_name" value="$(arg caato_name)"/>
+
+      <arg name="set_base_frame" value="$(arg caato_name)/base_link"/>
+      <arg name="set_odom_frame" value="$(arg caato_name)/odom"/>
+      <arg name="set_scan_frame" value="$(arg caato_name)/scan"/>
+      <arg name="set_map_frame" value="$(arg set_map_frame)"/>
+      <arg name="scan_topic" value="/$(arg caato_name)/scan"/>
+      <arg name="cmd_vel_topic" value="/$(arg caato_name)/cmd_vel"/>
+      <arg name="open_rviz" value="false"/>
+
+      <arg name="bot_x_pos" value="12.10"/>
+      <arg name="bot_y_pos" value="-22.30"/>
+      <arg name="bot_z_pos" value="1.0"/>
+      <arg name="bot_a_pos" value="1.57"/>
+
+      <arg name="laserscan_topics" value="/$(arg caato_name)/hokuyo_laser_scanner_1/scan /$(arg caato_name)/hokuyo_laser_scanner_2/scan" />
+      <arg name="cloud_destination_topic" value="/$(arg caato_name)/merged_cloud" />
+    </include>
+   
+  </group>
+  
+      	<node name="$(arg caato_name)_free_fleet_client_node" 
+      pkg="free_fleet_client_ros1"
+      type="free_fleet_client_ros1" output="screen">
+    <param name="fleet_name" type="string" value="caato"/>
+    <param name="robot_name" type="string" value="$(arg caato_name)"/>
+    <param name="level_name" type="string" value="L9"/>
+    <param name="dds_domain" type="int" value="42"/>
+    <param name="max_dist_to_first_waypoint" type="double" value="10.0"/>
+    <param name="battery_state_topic" value="$(arg caato_name)/battery_state"/>
+    <param name="robot_frame" value="$(arg caato_name)/base_link"/>
+    <param name="move_base_server_name" value="$(arg caato_name)/move_base"/>
+  </node>
+
+
+  <!-- launch the overall visualization on rviz -->
+  <node pkg="rviz" type="rviz" name="rviz" required="true"
+        args="-d $(find adhoc_simulations)/rviz/multi_caato_mbc_ff.rviz"/>
+
+  
+</launch>

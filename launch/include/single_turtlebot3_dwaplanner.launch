@@ -26,6 +26,8 @@
 
   <param name="robot_description"
     command="$(find xacro)/xacro --inorder '$(find adhoc_simulations)/tb3_urdf/turtlebot3_$(arg model).urdf.xacro' botname:=$(arg robot_name)" />
+    
+    <node pkg="adhoc_simulations" type="odom_tf_node" name="simulation_fixer" args="$(arg robot_name)"/>
 
   <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" output="screen">
     <param name="publish_frequency" type="double" value="50.0" />
@@ -37,7 +39,12 @@
     pkg="gazebo_ros"
     type="spawn_model"
     args="-urdf -model $(arg robot_name) -x $(arg bot_x_pos) -y $(arg bot_y_pos) -z $(arg bot_z_pos) -Y $(arg bot_a_pos) -param robot_description" />
-
+    
+  <!-- <node pkg="tf2_ros" type="static_transform_publisher" name="simulation_fixer" args="0 0 -20 0 0 0 $(arg robot_name)/odom/processed $(arg robot_name)/base_footprint" />
+ -->
+ 
+  
+  
   <!-- AMCL -->
   <node pkg="amcl" type="amcl" name="amcl">
     <param name="min_particles"             value="500"/>
@@ -54,7 +61,7 @@
     <param name="initial_pose_a"            value="$(arg initial_pose_a)"/>
     <param name="gui_publish_rate"          value="50.0"/>
 
-    <remap from="scan"                      to="$(arg scan_topic)"/>
+    
     <param name="laser_max_range"           value="3.5"/>
     <param name="laser_max_beams"           value="180"/>
     <param name="laser_z_hit"               value="0.5"/>

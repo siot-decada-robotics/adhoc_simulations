@@ -104,7 +104,7 @@
 	<!-- rviz -->
 	<group if="$(arg open_rviz)"> 
 		<node pkg="rviz" type="rviz" name="rviz" required="true"
-					args="-d $(find caato_navigation)/rviz/caato_navigation.rviz"/>
+					args="-d $(find caato_navigation)/rviz/gazebo_level10.rviz"/>
 	</group>
 
 </launch>
