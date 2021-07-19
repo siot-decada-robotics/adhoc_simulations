@@ -63,7 +63,6 @@
     <param name="move_base_server_name" value="$(arg tb3_0_prefix)/move_base"/>
   </node>
 
-
   <!-- launch the nav stack of caato-->
   <arg name="caato_model" default="v1m"/>
   <arg name="caato_name" default="caato_0"/>
@@ -104,6 +103,7 @@
     <param name="robot_frame" value="$(arg caato_name)/base_link"/>
     <param name="move_base_server_name" value="$(arg caato_name)/move_base"/>
   </node>
+
 
 
   <!-- launch the overall visualization on rviz -->

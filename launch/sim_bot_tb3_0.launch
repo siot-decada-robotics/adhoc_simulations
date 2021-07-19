@@ -1,7 +1,7 @@
 <launch>
   <arg name="model" default="burger" doc="model type [burger, waffle, waffle_pi]"/>
   <arg name="set_map_frame"  default="map"/>
-  <arg name="robot_name" default="tb3_2"/>
+  <arg name="robot_name" default="tb3_0"/>
 
   <arg name="bot_x_pos" default="22.0"/>
   <!--arg name="bot_x_pos" default="16.45"/-->
