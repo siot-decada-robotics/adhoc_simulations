@@ -131,5 +131,15 @@
       </plugin>
     </sensor>
   </gazebo>
+  
+  <gazebo>
+    <plugin name="battery_plugin" filename="libgazebo_ros_battery.so">
+      <battery_topic>/$(arg botname)_node/$(arg botname)/battery_state</battery_topic>
+      <consumer_topic>/$(arg botname)/consumer</consumer_topic>
+      <use_nonlinear_model>True</use_nonlinear_model>
+      <update_rate>10.0</update_rate>
+      <rosDebugLevel>Debug</rosDebugLevel>
+    </plugin>
+  </gazebo>
 
 </robot>

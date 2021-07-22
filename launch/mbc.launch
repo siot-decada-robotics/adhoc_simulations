@@ -1,0 +1,9 @@
+<launch>
+
+   <include file="$(find adhoc_simulations)/launch/sim_base_mbc.launch">
+   </include>
+   
+  <include file="$(find adhoc_simulations)/launch/sim_bot_tb3.launch">
+  </include>
+
+</launch>
