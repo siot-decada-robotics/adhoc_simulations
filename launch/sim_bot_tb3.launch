@@ -4,7 +4,7 @@
   <arg name="robot_name" default="tb3_0"/>
 
   <arg name="bot_x_pos" default="19.20"/>
-  <arg name="bot_y_pos" default="-11.41"/>
+  <arg name="bot_y_pos" default="-13.96"/>
   <arg name="bot_z_pos" default="0.5"/>
   <arg name="bot_a_pos" default="1.57"/>
 
