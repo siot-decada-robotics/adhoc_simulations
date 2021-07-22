@@ -1,16 +1,11 @@
 <launch>
 
   <arg name="open_rviz" default="false"/>
+  <arg name="set_map_frame"  default="map"/>
+  <arg name="map_file" default="$(find adhoc_simulations)/maps/mbc/mbc_L9_simulation_map.yaml"/>
   <arg name="world_file" default="$(find adhoc_simulations)/worlds/mbc.world"/>
   <arg name="headless"  default="false"/>
   <arg name="gui"  default="true"/>
-  
-  <!-- Map Settings -->
-  <arg name="set_map_frame1"  default="map1"/>
-  <arg name="map_file1" default="$(find adhoc_simulations)/maps/mbc/mbc_L9_simulation_map.yaml"/>
-  <arg name="set_map_frame2"  default="map2"/>
-  <arg name="map_file2" default="$(find adhoc_simulations)/maps/mbc/mbc_L10_v2.yaml"/>
-
 
   <env name="GAZEBO_MODEL_PATH" value="$(find adhoc_simulations)/models" />
 
@@ -23,23 +18,12 @@
     <arg name="debug" value="false"/>
   </include>
 
-  <!-- Map server1 -->
-  <node pkg="map_server" name="map_server1" type="map_server" 
-      args="$(arg map_file1)">
-    <param name="frame_id" value="$(arg set_map_frame1)"/>
-    <remap from="map" to ="map1" />
+  <!-- Map server -->
+  <node pkg="map_server" name="map_server" type="map_server" 
+      args="$(arg map_file)">
+    <param name="frame_id" value="$(arg set_map_frame)"/>
   </node>
   
-  <!-- Map server2 -->
-  <node pkg="map_server" name="map_server2" type="map_server" 
-      args="$(arg map_file2)">
-    <param name="frame_id" value="$(arg set_map_frame2)"/>
-    <remap from="map" to ="map2" />
-  </node>
-  
-  <node name ="mux_map_service" pkg ="topic_tools" type ="mux" args ="/map /map1 /map2 mux:=mux_map_service" output = "screen" >
-    <param name ="initial_topic " value= "map1"/>
-  </node>
   
   <!-- launch the navigation stacks of 3 turtlebot3s-->
   <arg name="model" default="burger" doc="model type [burger, waffle, waffle_pi]"/>
@@ -53,13 +37,13 @@
       <arg name="set_base_frame" value="$(arg tb3_0_prefix)/base_footprint"/>
       <arg name="set_odom_frame" value="$(arg tb3_0_prefix)/odom"/>
       <arg name="set_scan_frame" value="$(arg tb3_0_prefix)/base_scan"/>
-      <arg name="set_map_frame" value="map"/>
+      <arg name="set_map_frame" value="$(arg set_map_frame)"/>
       <!-- <arg name="scan_topic" value="$(arg robot_name)/scan"/> -->
       <arg name="open_rviz" value="false"/>
       
-      <arg name="bot_x_pos" value="16.45"/>
-      <arg name="bot_y_pos" value="-28.38"/>
-      <arg name="bot_z_pos" value="0.0"/>
+      <arg name="bot_x_pos" value="19.20"/>
+      <arg name="bot_y_pos" value="-13.96"/>
+      <arg name="bot_z_pos" value="0.5"/>
       <arg name="bot_a_pos" value="1.57"/>
       
     </include>
@@ -78,7 +62,6 @@
     <param name="robot_frame" value="$(arg tb3_0_prefix)/base_footprint"/>
     <param name="move_base_server_name" value="$(arg tb3_0_prefix)/move_base"/>
   </node>
-
 
 
 
