@@ -5,7 +5,8 @@
   <arg name="world_file" default="$(find adhoc_simulations)/worlds/mbc.world"/>
   <arg name="headless"  default="false"/>
   <arg name="gui"  default="true"/>
-
+  
+  <env name="GAZEBO_MODEL_DATABASE_URI" value="anything" />
   <env name="GAZEBO_MODEL_PATH" value="$(find adhoc_simulations)/models" />
 
   <include file="$(find gazebo_ros)/launch/empty_world.launch">

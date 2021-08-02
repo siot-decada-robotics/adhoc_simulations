@@ -2298,7 +2298,7 @@
       <pose>0 0 0.0 0 0 0</pose>
     </include>
     <model name="ShaftDoor_Lift1_L10_door">
-      <pose>17.16089213625023 -11.58067660701158 20.0 0 0 1.57</pose>
+      <pose>17.18706209363312 -11.580492547898384 20.0 0 0 1.57</pose>
       <link name="right_door">
         <pose>0.25 0 1.25 0 0 0</pose>
         <visual name="right_door_visual">
@@ -2419,7 +2419,7 @@
       </plugin>
     </model>
     <model name="ShaftDoor_Lift1_L9_door">
-      <pose>17.16089213625023 -11.58067660701158 0.0 0 0 1.57</pose>
+      <pose>17.18706209363312 -11.580492547898384 0.0 0 0 1.57</pose>
       <link name="right_door">
         <pose>0.25 0 1.25 0 0 0</pose>
         <visual name="right_door_visual">
@@ -2824,7 +2824,7 @@
         <f_max_cabin>25323.0</f_max_cabin>
         <cabin_joint_name>cabin_joint</cabin_joint_name>
       </plugin>
-      <pose>16.36089213625023 -11.58067660701158 0 0 0 0.0</pose>
+      <pose>16.38706209363312 -11.580492547898384 0 0 0 0.0</pose>
     </model>
     <rmf_charger_waypoints name="charger_waypoints">
       <rmf_vertex name="ent_corridor_1" x="21.187000882354898" y="-16.077856176688147" level="L10" />
