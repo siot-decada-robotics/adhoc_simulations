@@ -1,6 +1,7 @@
 <launch>
 
    <include file="$(find adhoc_simulations)/launch/sim_base_mbc.launch">
+   <arg name="map_file" value="$(find adhoc_simulations)/maps/mbc_L10.yaml"/>
    </include>
    
   <include file="$(find adhoc_simulations)/launch/sim_bot_tb3.launch">

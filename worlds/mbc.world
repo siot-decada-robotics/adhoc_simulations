@@ -14,7 +14,7 @@
       </camera>
       <plugin name="toggle_charging" filename="libtoggle_charging.so" />
       <plugin name="toggle_floors" filename="libtoggle_floors.so">
-        <floor name="L10" model_name="building_L10">
+        <floor name="L10" model_name="mbc_L10">
           <model name="OpenRobotics/Sofa" />
           <model name="OpenRobotics/Sofa_2" />
           <model name="OpenRobotics/Cafe table" />
@@ -57,10 +57,9 @@
           <model name="cafe_door_2" />
           <model name="stairs_door" />
           <model name="locker_rm_door" />
-          <model name="ShaftDoor_Lift 1_L10_door1" />
+          <model name="ShaftDoor_Lift1_L10_door" />
         </floor>
-        <floor name="L9" model_name="building_L9">
-        <!--
+        <floor name="L9" model_name="mbc_L9">
           <model name="OpenRobotics/AdjTable" />
           <model name="OpenRobotics/AdjTable_2" />
           <model name="OpenRobotics/AdjTable_3" />
@@ -165,9 +164,9 @@
           <model name="OpenRobotics/DeskChair_50" />
           <model name="OpenRobotics/DeskChair_51" />
           <model name="OpenRobotics/DeskChair_52" />
-          <model name="main_entrance_door_lvl9" /> -->
+          <model name="main_entrance_door_lvl9" />
           <model name="lab_door_lvl9" />
-          <model name="ShaftDoor_Lift 1_L9_door1" />
+          <model name="ShaftDoor_Lift1_L9_door" />
         </floor>
       </plugin>
     </gui>
@@ -308,6 +307,16 @@
       <uri>model://Desk</uri>
       <pose>24.060479106546982 -28.123678017173845 20.0 0 0 1.5708</pose>
       <static>True</static>
+    </include>
+    <include>
+      <name>deliveryRobot_2</name>
+      <uri>model://DeliveryRobot</uri>
+      <pose>21.187000882354898 -16.077856176688147 20.0 0 0 -0.7715116760173255</pose>
+    </include>
+    <include>
+      <name>deliveryRobot_1</name>
+      <uri>model://DeliveryRobot</uri>
+      <pose>26.34210898270348 -17.386698661006655 20.0 0 0 -0.24863867828720565</pose>
     </include>
     <model name="meet_rm1_door">
       <pose>47.51631323812991 -28.34884641998447 20.0 0 0 1.5718276491743373</pose>
@@ -1485,8 +1494,8 @@
       </plugin>
     </model>
     <include>
-      <name>building_L10</name>
-      <uri>model://building_L10</uri>
+      <name>mbc_L10</name>
+      <uri>model://mbc_L10</uri>
       <pose>0 0 20.0 0 0 0</pose>
     </include>
     <include>
@@ -2113,6 +2122,16 @@
       <pose>49.60479721214754 -28.220605046009116 0.0 0 0 1.5778331057742057</pose>
       <static>True</static>
     </include>
+    <include>
+      <name>tinyRobot1</name>
+      <uri>model://TinyRobot</uri>
+      <pose>19.176895472183755 -15.050371285989236 0.0 0 0 -1.5662312595030068</pose>
+    </include>
+    <include>
+      <name>tinyRobot2</name>
+      <uri>model://TinyRobot</uri>
+      <pose>13.79882934241241 -23.639216792142715 0.0 0 0 -1.698864170819328</pose>
+    </include>
     <model name="main_entrance_door_lvl9">
       <pose>19.268236557665332 -13.456990091303892 0.0 0 0 -3.1293838657320174</pose>
       <link name="right">
@@ -2274,11 +2293,11 @@
       </plugin>
     </model>
     <include>
-      <name>building_L9</name>
-      <uri>model://building_L9</uri>
+      <name>mbc_L9</name>
+      <uri>model://mbc_L9</uri>
       <pose>0 0 0.0 0 0 0</pose>
     </include>
-    <model name="ShaftDoor_Lift 1_L10_door1">
+    <model name="ShaftDoor_Lift1_L10_door">
       <pose>17.16089213625023 -11.58067660701158 20.0 0 0 1.57</pose>
       <link name="right_door">
         <pose>0.25 0 1.25 0 0 0</pose>
@@ -2396,10 +2415,10 @@
         <a_nom_door>0.1</a_nom_door>
         <dx_min_door>0.0001</dx_min_door>
         <f_max_door>35.0</f_max_door>
-        <door left_joint_name="left_joint" name="ShaftDoor_Lift 1_L10_door1" right_joint_name="right_joint" type="DoubleSlidingDoor" />
+        <door left_joint_name="left_joint" name="ShaftDoor_Lift1_L10_door" right_joint_name="right_joint" type="DoubleSlidingDoor" />
       </plugin>
     </model>
-    <model name="ShaftDoor_Lift 1_L9_door1">
+    <model name="ShaftDoor_Lift1_L9_door">
       <pose>17.16089213625023 -11.58067660701158 0.0 0 0 1.57</pose>
       <link name="right_door">
         <pose>0.25 0 1.25 0 0 0</pose>
@@ -2517,10 +2536,10 @@
         <a_nom_door>0.1</a_nom_door>
         <dx_min_door>0.0001</dx_min_door>
         <f_max_door>35.0</f_max_door>
-        <door left_joint_name="left_joint" name="ShaftDoor_Lift 1_L9_door1" right_joint_name="right_joint" type="DoubleSlidingDoor" />
+        <door left_joint_name="left_joint" name="ShaftDoor_Lift1_L9_door" right_joint_name="right_joint" type="DoubleSlidingDoor" />
       </plugin>
     </model>
-    <model name="Lift 1">
+    <model name="Lift1">
       <link name="platform">
         <inertial>
           <mass>1200</mass>
@@ -2700,7 +2719,7 @@
           <xyz>0 0 1</xyz>
         </axis>
       </joint>
-      <model name="CabinDoor_Lift 1_door1">
+      <model name="CabinDoor_Lift1_door">
         <pose>0.725 0.0 0 0 0 1.57</pose>
         <link name="right_door">
           <pose>0.25 0 1.25 0 0 0</pose>
@@ -2786,16 +2805,16 @@
           <a_nom_door>0.1</a_nom_door>
           <dx_min_door>0.0001</dx_min_door>
           <f_max_door>35.0</f_max_door>
-          <door left_joint_name="left_joint" name="CabinDoor_Lift 1_door1" right_joint_name="right_joint" type="DoubleSlidingDoor" />
+          <door left_joint_name="left_joint" name="CabinDoor_Lift1_door" right_joint_name="right_joint" type="DoubleSlidingDoor" />
         </plugin>
       </model>
       <plugin name="lift" filename="liblift.so">
-        <lift_name>Lift 1</lift_name>
+        <lift_name>Lift1</lift_name>
         <floor name="L10" elevation="20.0">
-          <door_pair cabin_door="CabinDoor_Lift 1_door1" shaft_door="ShaftDoor_Lift 1_L10_door1" />
+          <door_pair cabin_door="CabinDoor_Lift1_door" shaft_door="ShaftDoor_Lift1_L10_door" />
         </floor>
         <floor name="L9" elevation="0.0">
-          <door_pair cabin_door="CabinDoor_Lift 1_door1" shaft_door="ShaftDoor_Lift 1_L9_door1" />
+          <door_pair cabin_door="CabinDoor_Lift1_door" shaft_door="ShaftDoor_Lift1_L9_door" />
         </floor>
         <initial_floor>L9</initial_floor>
         <v_max_cabin>2.0</v_max_cabin>
@@ -2807,6 +2826,12 @@
       </plugin>
       <pose>16.36089213625023 -11.58067660701158 0 0 0 0.0</pose>
     </model>
-    <rmf_charger_waypoints name="charger_waypoints" />
+    <rmf_charger_waypoints name="charger_waypoints">
+      <rmf_vertex name="ent_corridor_1" x="21.187000882354898" y="-16.077856176688147" level="L10" />
+      <rmf_vertex name="" x="5.192157158712688" y="-13.407032236813066" level="L9" />
+      <rmf_vertex name="tinyRobot3_charger" x="-4.852083207249709" y="-13.546942186572672" level="L9" />
+      <rmf_vertex name="test1" x="19.176895472183755" y="-15.050371285989236" level="L9" />
+      <rmf_vertex name="pantry" x="14.621889171992542" y="-17.247642563464236" level="L9" />
+    </rmf_charger_waypoints>
   </world>
 </sdf>
