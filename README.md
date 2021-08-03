@@ -56,10 +56,10 @@ source ~/adhoc_sim_ws/install/setup.bash
 roslaunch adhoc_simulations sim_base_tb3_house.launch
 ```
 *And launch as many **other turtlebot3s** as you want in separate terminals onto the same map!*
-```
+```bash
 source ~/adhoc_sim_ws/install/setup.bash
-roslaunch adhoc_simulations sim_bot_tb3.launch
-#When launching more than one tb3, change the robot_name argument in the launch file to differentiate among the different robots.
+roslaunch adhoc_simulations sim_bot_tb3_0.launch
+# When launching more than one tb3, change the robot_name argument in the launch file to differentiate among the different robots.
 ```
 <br>
 
@@ -100,9 +100,9 @@ source ~/adhoc_sim_ws/install/setup.bash
 roslaunch adhoc_simulations sim_base_mbc.launch
 ```
 *And launch as many **other caatos** as you want in separate terminals onto the same map!*
-```
+```bash
 source ~/adhoc_sim_ws/install/setup.bash
-roslaunch adhoc_simulations sim_bot_caato.launch
+roslaunch adhoc_simulations sim_bot_caato_0.launch
 #When launching more than one caato, change the robot_name argument in the launch file to differentiate among the different robots.
 ```
 <br>
@@ -113,3 +113,21 @@ Refer to siot-decada-robotics/caato repository (private) for more information on
 Follow the installation instructions for Server in ROS2 in the [free_fleet repository](https://github.com/siot-decada-robotics/free_fleet/tree/noetic-devel-multi-fix#server-in-ros2).
 
 Now you can monitor and send commands to your robots launched in `adhoc simulations` using the commands provided in free fleet. 
+
+<br>
+
+## RMF Integration
+Once you have integrated with Free Fleet, you can run adhoc_sim with the RMF system. Ensure that you have the following processes running before launching adhoc_simulations
+- [RMF Demos](https://github.com/siot-decada-robotics/rmf_demos) -> `ros2 launch rmf_demos mbc_no_sim.launch.xml`
+- [Free Fleet Server](https://github.com/siot-decada-robotics/free_fleet) -> `ros2 launch ff_examples_ros2 turtlebot3_fleet_server.launch.xml`
+- [RosBridge](https://github.com/siot-decada-robotics/ros1_bridge) -> `ros2 run ros1_bridge clock_bridge`
+
+To allow the doors and lifts to appear on RMF you must source the door and lift plugins in your adhoc simulations workspace. *Note: This is a temporary fix*
+```bash
+# IMPT: Change the file paths to match the file path where rmf_demos is stored in your computer!!!
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:~/rmf_demos_ws/install/rmf_door_msgs/lib:~/rmf_demos_ws/install/rmf_building_sim_gazebo_plugins/lib:~/rmf_demos_ws/install/rmf_building_sim_common/lib:/opt/ros/foxy/lib:~/rmf_demos_ws/install/rmf_lift_msgs/lib
+```
+Thereafter you can launch a turtlebot3 in **mbc L9** and control it through RMF. You can spawn tb3 on **mbc L10** as well by changing the *map*, *z-coordinate* and *level* in the launch file appropriately.
+```
+roslaunch adhoc_simulations mbc.launch
+```
