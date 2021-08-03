@@ -1,4 +1,4 @@
-image: mbc.png
+image: mbc.pgm
 resolution: 0.0508
 origin: [-2, -30.8, 0.0]
 negate: 0

@@ -1,4 +1,4 @@
-image: ./mbc_L9_simulation_map.pgm
+image: ./mbc_L9.pgm
 resolution: 0.050000
 origin: [-5.185782, -32.351328, 0.000000]
 negate: 0

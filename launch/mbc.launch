@@ -2,7 +2,7 @@
 
   <arg name="open_rviz" default="false"/>
   <arg name="set_map_frame"  default="map"/>
-  <arg name="map_file" default="$(find adhoc_simulations)/maps/mbc/mbc_L9_simulation_map.yaml"/>
+  <arg name="map_file" default="$(find adhoc_simulations)/maps/mbc/mbc_L9.yaml"/>
   <arg name="world_file" default="$(find adhoc_simulations)/worlds/mbc.world"/>
   <arg name="headless"  default="false"/>
   <arg name="gui"  default="true"/>
