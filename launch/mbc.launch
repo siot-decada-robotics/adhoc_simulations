@@ -1,10 +1,37 @@
 <launch>
+  
+  <rosparam command="load" file="$(find adhoc_simulations)/config/params.yaml" />
 
    <include file="$(find adhoc_simulations)/launch/sim_base_mbc.launch">
-   <arg name="map_file" value="$(find adhoc_simulations)/maps/mbc_L10.yaml"/>
    </include>
    
   <include file="$(find adhoc_simulations)/launch/sim_bot_tb3.launch">
+  <arg name="map_file" value="$(find adhoc_simulations)/maps/mbc_L10.yaml"/>
+  <arg name="robot_name" value="tb3_0" />
+  <arg name="bot_x_pos" value="13.75"/>
+  <arg name="bot_y_pos" value="-14.02"/>
+  <arg name="bot_z_pos" default="20.0"/>
+  <arg name="level_name" value="L10"/>
   </include>
-
+  
+  
+  <include file="$(find adhoc_simulations)/launch/sim_bot_tb3.launch">
+  <arg name="map_file" value="$(find adhoc_simulations)/maps/mbc_L10.yaml"/>
+  <arg name="robot_name" value="tb3_1" />
+  <arg name="bot_x_pos" value="21.59"/>
+  <arg name="bot_y_pos" value="-14.9"/>
+  <arg name="bot_z_pos" default="20.0"/>
+  <arg name="level_name" value="L10"/>
+  </include>
+  
+  <include file="$(find adhoc_simulations)/launch/sim_bot_caato.launch">
+  <arg name="map_file" value="$(find adhoc_simulations)/maps/mbc_L10.yaml"/>
+  <arg name="robot_name" value="caato_0" />
+  <arg name="level_name" value="L10"/>
+  <arg name="bot_x_pos" value="22.5"/>
+  <arg name="bot_y_pos" value="-27.7"/>
+  <arg name="bot_z_pos" default="20.0"/>
+  </include>
+  
+  
 </launch>

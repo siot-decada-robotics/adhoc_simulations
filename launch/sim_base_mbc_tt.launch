@@ -8,6 +8,8 @@
   <arg name="world_file" default="$(find adhoc_simulations)/worlds/mbc.world"/>
   <arg name="headless"  default="false"/>
   <arg name="gui"  default="true"/>
+  <arg name="map_file" default="$(find adhoc_simulations)/maps/mbc_L10.yaml"/>
+  <arg name="set_map_frame"  default="map"/>
 
   <env name="GAZEBO_MODEL_PATH" value="$(find adhoc_simulations)/models" />
 
@@ -23,6 +25,14 @@
   <param name="robot_description" command="$(find xacro)/xacro --inorder $(find turtlebot3_description)/urdf/turtlebot3_$(arg model).urdf.xacro" />
 
   <node pkg="gazebo_ros" type="spawn_model" name="spawn_urdf"  args="-urdf -model turtlebot3_$(arg model) -x $(arg x_pos) -y $(arg y_pos) -z $(arg z_pos) -param robot_description" />
+  
+    <!-- Map server -->
+ 
+  <node pkg="map_server" name="map_server" type="map_server" 
+      args="$(arg map_file)">
+    <param name="frame_id" value="$(arg set_map_frame)"/>
+    <remap from="/map" to="/tb3_0/map" />
+  </node>
   
   <!-- Mod by Tim: See http://library.isr.ist.utl.pt/docs/roswiki/tf.html#static_transform_publisher -->
   <!-- node pkg="tf" type="static_transform_publisher" name="map_odom_broadcaster" args="0 0 0 0 0 0 map odom 100" / 

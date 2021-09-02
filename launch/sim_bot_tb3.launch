@@ -1,12 +1,16 @@
 <launch>
   <arg name="model" default="burger" doc="model type [burger, waffle, waffle_pi]"/>
-  <arg name="set_map_frame"  default="map"/>
+  
   <arg name="robot_name" default="tb3_0"/>
+  <arg name="set_map_frame"  default="map"/>
+  <arg name="map_file" default="$(find adhoc_simulations)/maps/mbc_L10.yaml"/>
+  <arg name="map_topic" default="map"/>
+  <arg name="level_name" default="L10" />
 
   <arg name="bot_x_pos" default="19.20"/>
   <arg name="bot_y_pos" default="-13.96"/>
   <arg name="bot_z_pos" default="20.5"/>
-  <arg name="bot_a_pos" default="1.57"/>
+  <arg name="bot_a_pos" default="0.0"/>
 
   <group ns = "$(arg robot_name)">
     <include file="$(find adhoc_simulations)/launch/include/single_turtlebot3.launch">
@@ -23,7 +27,7 @@
       <arg name="bot_x_pos" value="$(arg bot_x_pos)"/>
       <arg name="bot_y_pos" value="$(arg bot_y_pos)"/>
       <arg name="bot_z_pos" value="$(arg bot_z_pos)"/>
-      <arg name="bot_a_pos" value="$(arg bot_z_pos)"/>
+      <arg name="bot_a_pos" value="$(arg bot_a_pos)"/>
       
     </include>
   </group>
@@ -34,12 +38,21 @@
       type="free_fleet_client_ros1" output="screen">
     <param name="fleet_name" type="string" value="turtlebot3"/>
     <param name="robot_name" type="string" value="$(arg robot_name)"/>
-    <param name="level_name" type="string" value="L10"/>
+    <param name="level_name" type="string" value="$(arg level_name)"/>
     <param name="dds_domain" type="int" value="42"/>
     <param name="max_dist_to_first_waypoint" type="double" value="10.0"/>
     <param name="battery_state_topic" value="$(arg robot_name)/battery_state"/>
     <param name="robot_frame" value="$(arg robot_name)/base_footprint"/>
     <param name="move_base_server_name" value="$(arg robot_name)/move_base"/>
+  </node>
+  
+  <!-- Map server -->
+ 
+  <node pkg="map_server" name="$(arg robot_name)_map_server" type="map_server" 
+      args="$(arg map_file)">
+    <param name="frame_id" value="$(arg set_map_frame)"/>
+    <!-- <remap from="/map" to="$(arg map_topic)" />
+    <remap from="/change_map" to="/$(arg robot_name)/change_map" /> -->
   </node>
 
 </launch>

@@ -308,16 +308,6 @@
       <pose>24.060479106546982 -28.123678017173845 20.0 0 0 1.5708</pose>
       <static>True</static>
     </include>
-    <include>
-      <name>deliveryRobot_2</name>
-      <uri>model://DeliveryRobot</uri>
-      <pose>21.187000882354898 -16.077856176688147 20.0 0 0 -0.7715116760173255</pose>
-    </include>
-    <include>
-      <name>deliveryRobot_1</name>
-      <uri>model://DeliveryRobot</uri>
-      <pose>26.34210898270348 -17.386698661006655 20.0 0 0 -0.24863867828720565</pose>
-    </include>
     <model name="meet_rm1_door">
       <pose>47.51631323812991 -28.34884641998447 20.0 0 0 1.5718276491743373</pose>
       <link name="right">
@@ -2121,16 +2111,6 @@
       <uri>model://DeskChair</uri>
       <pose>49.60479721214754 -28.220605046009116 0.0 0 0 1.5778331057742057</pose>
       <static>True</static>
-    </include>
-    <include>
-      <name>tinyRobot1</name>
-      <uri>model://TinyRobot</uri>
-      <pose>19.176895472183755 -15.050371285989236 0.0 0 0 -1.5662312595030068</pose>
-    </include>
-    <include>
-      <name>tinyRobot2</name>
-      <uri>model://TinyRobot</uri>
-      <pose>13.79882934241241 -23.639216792142715 0.0 0 0 -1.698864170819328</pose>
     </include>
     <model name="main_entrance_door_lvl9">
       <pose>19.268236557665332 -13.456990091303892 0.0 0 0 -3.1293838657320174</pose>

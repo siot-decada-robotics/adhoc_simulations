@@ -17,12 +17,10 @@
     <arg name="headless" value="$(arg headless)"/>
     <arg name="debug" value="false"/>
   </include>
+  
+  <include file="$(find map_mux)/launch/map_mux.launch">
+  </include>
 
-  <!-- Map server -->
-  <node pkg="map_server" name="map_server" type="map_server" 
-      args="$(arg map_file)">
-    <param name="frame_id" value="$(arg set_map_frame)"/>
-  </node>
   
   <!-- launch the overall visualization on rviz  -->
   <node pkg="rviz" type="rviz" name="rviz" required="true"

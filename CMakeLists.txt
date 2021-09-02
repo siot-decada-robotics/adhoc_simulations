@@ -38,7 +38,7 @@ if (catkin_FOUND)
  )
 
   install(
-    DIRECTORY launch maps models rviz tb3_urdf worlds scripts
+    DIRECTORY launch maps models rviz tb3_urdf worlds scripts config
     DESTINATION share/${PROJECT_NAME}
     # DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
   )
@@ -66,7 +66,7 @@ else()
   
 
   install(
-    DIRECTORY launch maps models rviz tb3_urdf worlds scripts
+    DIRECTORY launch maps models rviz tb3_urdf worlds scripts config
     DESTINATION share/${PROJECT_NAME}
   )
   

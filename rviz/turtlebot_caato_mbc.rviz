@@ -59,6 +59,78 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: false
+        caato_0/base_link:
+          Value: true
+        caato_0/basemod_link:
+          Value: true
+        caato_0/camera_dummy_link:
+          Value: true
+        caato_0/camera_frame:
+          Value: true
+        caato_0/camera_optical_frame:
+          Value: true
+        caato_0/castor_front_link:
+          Value: true
+        caato_0/d435_bottom_screw_frame:
+          Value: true
+        caato_0/d435_color_frame:
+          Value: true
+        caato_0/d435_color_optical_frame:
+          Value: true
+        caato_0/d435_depth_frame:
+          Value: true
+        caato_0/d435_depth_optical_frame:
+          Value: true
+        caato_0/d435_front_bottom_screw_frame:
+          Value: true
+        caato_0/d435_front_color_frame:
+          Value: true
+        caato_0/d435_front_color_optical_frame:
+          Value: true
+        caato_0/d435_front_depth_frame:
+          Value: true
+        caato_0/d435_front_depth_optical_frame:
+          Value: true
+        caato_0/d435_front_left_ir_frame:
+          Value: true
+        caato_0/d435_front_left_ir_optical_frame:
+          Value: true
+        caato_0/d435_front_link:
+          Value: true
+        caato_0/d435_front_right_ir_frame:
+          Value: true
+        caato_0/d435_front_right_ir_optical_frame:
+          Value: true
+        caato_0/d435_left_ir_frame:
+          Value: true
+        caato_0/d435_left_ir_optical_frame:
+          Value: true
+        caato_0/d435_link:
+          Value: true
+        caato_0/d435_right_ir_frame:
+          Value: true
+        caato_0/d435_right_ir_optical_frame:
+          Value: true
+        caato_0/hokuyo_laser_scanner_1:
+          Value: true
+        caato_0/hokuyo_laser_scanner_2:
+          Value: true
+        caato_0/inertial_link:
+          Value: true
+        caato_0/left_wheel_link:
+          Value: true
+        caato_0/odom:
+          Value: true
+        caato_0/os1_imu:
+          Value: true
+        caato_0/os1_lidar:
+          Value: true
+        caato_0/os1_sensor:
+          Value: true
+        caato_0/right_wheel_link:
+          Value: true
+        caato_0/xnergy_rcu_link:
+          Value: true
         map:
           Value: true
         tb3_0/base_footprint:
@@ -105,6 +177,60 @@ Visualization Manager:
       Show Names: false
       Tree:
         map:
+          caato_0/odom:
+            caato_0/base_link:
+              caato_0/basemod_link:
+                caato_0/camera_dummy_link:
+                  caato_0/camera_frame:
+                    caato_0/camera_optical_frame:
+                      {}
+                caato_0/castor_front_link:
+                  {}
+                caato_0/d435_bottom_screw_frame:
+                  caato_0/d435_link:
+                    caato_0/d435_depth_frame:
+                      caato_0/d435_color_frame:
+                        caato_0/d435_color_optical_frame:
+                          {}
+                      caato_0/d435_depth_optical_frame:
+                        {}
+                      caato_0/d435_left_ir_frame:
+                        caato_0/d435_left_ir_optical_frame:
+                          {}
+                      caato_0/d435_right_ir_frame:
+                        caato_0/d435_right_ir_optical_frame:
+                          {}
+                caato_0/d435_front_bottom_screw_frame:
+                  caato_0/d435_front_link:
+                    caato_0/d435_front_depth_frame:
+                      caato_0/d435_front_color_frame:
+                        caato_0/d435_front_color_optical_frame:
+                          {}
+                      caato_0/d435_front_depth_optical_frame:
+                        {}
+                      caato_0/d435_front_left_ir_frame:
+                        caato_0/d435_front_left_ir_optical_frame:
+                          {}
+                      caato_0/d435_front_right_ir_frame:
+                        caato_0/d435_front_right_ir_optical_frame:
+                          {}
+                caato_0/hokuyo_laser_scanner_1:
+                  {}
+                caato_0/hokuyo_laser_scanner_2:
+                  {}
+                caato_0/inertial_link:
+                  {}
+                caato_0/left_wheel_link:
+                  {}
+                caato_0/os1_sensor:
+                  caato_0/os1_imu:
+                    {}
+                  caato_0/os1_lidar:
+                    {}
+                caato_0/right_wheel_link:
+                  {}
+                caato_0/xnergy_rcu_link:
+                  {}
           tb3_0/odom:
             tb3_0/odom/processed:
               tb3_0/base_footprint:
@@ -141,7 +267,7 @@ Visualization Manager:
       Draw Behind: false
       Enabled: true
       Name: Map
-      Topic: /tb3_0/map
+      Topic: /map
       Unreliable: false
       Use Timestamp: false
       Value: true
@@ -804,5 +930,5 @@ Window Geometry:
   Views:
     collapsed: true
   Width: 1600
-  X: 320
-  Y: 27
+  X: 155
+  Y: 95
