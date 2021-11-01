@@ -32,7 +32,7 @@ Next, start a new ROS1 workspace, and pull in the necessary repositories
 ```bash
 mkdir -p ~/adhoc_sim_ws/src
 cd ~/adhoc_sim_ws/src
-git clone https://github.com/siot-decada-robotics/adhoc_simulations.git
+git clone https://github.com/siot-decada-robotics/adhoc_simulations.git -b abi-devel
 git clone https://github.com/siot-decada-robotics/free_fleet.git -b feature/map_request
 git clone https://github.com/eclipse-cyclonedds/cyclonedds.git
 git clone https://github.com/rhaschke/robot_state_publisher -b noetic-devel
@@ -83,7 +83,7 @@ Once again, start a new ROS1 workspace, and pull in the necessary repositories
 ```bash
 mkdir -p ~/adhoc_sim_ws/src
 cd ~/adhoc_sim_ws/src
-git clone https://github.com/siot-decada-robotics/adhoc_simulations.git
+git clone https://github.com/siot-decada-robotics/adhoc_simulations.git -b abi-devel
 git clone https://github.com/siot-decada-robotics/free_fleet.git -b feature/map_request
 git clone https://github.com/eclipse-cyclonedds/cyclonedds.git
 git clone https://github.com/rhaschke/robot_state_publisher -b noetic-devel
@@ -93,7 +93,6 @@ git clone https://github.com/siot-decada-robotics/map_mux.git -b abi-devel
 
 git clone https://github.com/siot-decada-robotics/caato.git
 git clone https://github.com/siot-decada-robotics/ira_laser_tools.git -b siot_caato
-git clone https://git.siotgov.tech/decada_robotics/roboteq_diff_driver.git
 
 git clone https://github.com/siot-decada-robotics/ouster_extras.git
 git clone https://github.com/siot-decada-robotics/ouster_example.git
@@ -102,6 +101,9 @@ git clone https://github.com/nilseuropa/gazebo_ros_battery.git
 
 cd robot_state_publisher
 git checkout 661628a76bbb
+
+cd ../cyclonedds
+git checkout 24d65488576b4f5697f823b213f8e962f091f40c
 
 sudo apt install ros-noetic-gazebo-ros-pkgs ros-noetic-dwa-local-planner
 ```
