@@ -4,7 +4,7 @@
   <arg name="robot_name" default="caato_0"/>
   <arg name="level_name" default="L10" />
   <arg name="map_file" default="$(find adhoc_simulations)/maps/mbc_L10.yaml" />
-  <arg name="map_topic" default="/$(arg robot_name)/map"/>
+  <arg name="map_topic" default="/map"/>
 
   <arg name="bot_x_pos" default="12.0"/>
   <arg name="bot_y_pos" default="-17.0"/>
