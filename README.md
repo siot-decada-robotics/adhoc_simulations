@@ -33,7 +33,7 @@ Next, start a new ROS1 workspace, and pull in the necessary repositories
 mkdir -p ~/adhoc_sim_ws/src
 cd ~/adhoc_sim_ws/src
 git clone https://github.com/siot-decada-robotics/adhoc_simulations.git
-git clone https://github.com/siot-decada-robotics/free_fleet.git -b noetic-devel-multi-fix
+git clone https://github.com/siot-decada-robotics/free_fleet.git -b feature/map_request
 git clone https://github.com/eclipse-cyclonedds/cyclonedds.git
 git clone https://github.com/rhaschke/robot_state_publisher -b noetic-devel
 
